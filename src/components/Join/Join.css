@@ -50,7 +50,7 @@ html, body {
     padding-bottom: 10px;
   }
   
-  .button {
+  .joinButton{
     width:20em;
     height:3em;
     border-radius:0;
@@ -60,6 +60,7 @@ html, body {
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     padding-top:0em;
+    letter-spacing:.3em;
   }
   
   .mt-20 {

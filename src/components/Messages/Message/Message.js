@@ -26,7 +26,7 @@ const Message = ({ message: { text, user, color }, name }) => {
           user === 'system'
           ? (
           <div className="messageContainer justifyStart">
-            <div className="messageBox backgroundDark" style={{borderRadius: '0px'}}>             
+            <div className="messageBox backgroundTransparent" style={{borderRadius: '0px'}}>             
               <p className="sentText" style={{
                   color: '#' + color,
                   fontSize:'10px'               

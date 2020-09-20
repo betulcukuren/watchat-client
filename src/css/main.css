@@ -1,10 +1,19 @@
-:root{
+html[data-theme='light']{
     --main-color: #4a4d4a;
     --lighten-main: #e7e7e7;
     --lighten-aux: #f6f6f6;
     --aux-color: #caccca;
     --bg-color: #f1f1f1;
     --text-color: #3B403A;
+}
+
+html[data-theme='dark'] {
+    --main-color: #e7e7e7;
+    --lighten-main: #4a4d4a;
+    --lighten-aux: #4a4d4a;
+    --aux-color: #4a4d4a;
+    --bg-color: #3B403A;
+    --text-color: #f1f1f1;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');

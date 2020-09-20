@@ -1,7 +1,7 @@
 .messageBox {
     font-size:14px;
     background: #F3F3F3;
-    /* border-radius: 3px; */
+    border-radius: 8px;
     padding: 8px 16px;
     margin:0;
     color: white;
@@ -34,7 +34,7 @@
     align-items: center;
     font-family: 'Open Sans', sans-serif;
     color: var(--main-color);
-    font-size:12px;
+    font-size:10px;
     margin:0;
     width:10vw;
     word-break: break-all;
@@ -76,7 +76,12 @@
   }
   
   .backgroundLight {
-    background:var(--lighten-aux);
+    background: #fff;
+    box-shadow: 3px 3px 5px #ddd;
+  }
+    
+  .backgroundTransparent {
+    background: transparent;
     box-shadow: 3px 3px 5px #ddd;
   }
 
@@ -87,3 +92,5 @@
     margin:0;
     float:right;
   }
+  
+ 

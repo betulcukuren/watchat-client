@@ -1,9 +1,15 @@
 import React from 'react';
 import '../../css/main.css';
 import './Input.css';
+import {RiSendPlane2Fill} from 'react-icons/ri';
+import {GrEmoji} from 'react-icons/gr';
+import {MdAttachFile} from 'react-icons/md';
+
 
 const Input = ({ setMessage, sendMessage, message }) => (
   <form className="form">
+    <button className="emoji button" onClick={e => sendMessage(e)}  style={{color: '#caccca'}}><GrEmoji/></button>
+    <button className="file button" onClick={e => sendMessage(e)}  style={{color: '#caccca'}}><MdAttachFile/></button>
     <input
       className="input"
       type="text"
@@ -12,7 +18,7 @@ const Input = ({ setMessage, sendMessage, message }) => (
       onChange={({ target: { value } }) => setMessage(value)}
       onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
     />
-    <button className="sendButton" onClick={e => sendMessage(e)}>Send</button>
+    <button className="send button" onClick={e => sendMessage(e)}  style={{color: '#caccca'}}><RiSendPlane2Fill/></button>
   </form>
 )
 

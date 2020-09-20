@@ -6,7 +6,7 @@ import './TextContainer.css';
 
 const TextContainer = ({ users, room }) => (
     <div className="textContainer">
-        <p className="title">{room}:</p>
+        <p className="title">{room}</p>
         <p className="count">{users.length} people are online</p>
         {
         users

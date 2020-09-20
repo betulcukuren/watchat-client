@@ -1,0 +1,126 @@
+  a {
+    font-size:12px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--main-color);
+    font-weight: 700;
+    letter-spacing:2px;
+  }
+  
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width:20vw;
+    height:100vh;
+    background-color: var(--lighten-main);
+    font-size:14px;
+    /* box-shadow: inset 2px 2px 5px var(--aux-color); */
+    color: var(--main-color);
+    /* border-top-right-radius:15px;
+    border-bottom-right-radius:15px */
+  }
+  
+  .activeContainer {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    height:auto;
+    height:60vh;
+    width:20vw;
+    overflow:auto;
+    padding:10px;
+    margin:0;
+    margin-bottom:5px;
+  }
+  
+  .activeItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    left:0;
+    right:0;
+    margin: 5px auto;
+    width:15vw;
+    height:5vh;
+    box-shadow: 0px 1px 2px var(--aux-color);
+    
+  }
+
+  .activeItem > p {
+    margin:0px;
+    margin-left:10px;
+    font-size:12px;
+  }
+
+  .activeItem > .icon {
+    margin-right:10px;
+  }
+  
+  .activeContainer img {
+    padding-left: 10px;
+  }
+  
+  .textContainer h1 {
+    margin-bottom: 0px;
+  }
+
+  .count{
+    margin:0;
+    font-size:12px;
+    font-style: italic;
+  }
+
+  .title{
+    font-weight: 700;
+    margin:0;
+  }
+
+  .options{
+    margin-top:20px;
+  }
+
+  .return > .icon{
+    font-size:22px;
+    margin:5px;
+    margin-bottom:-8px;
+  }
+
+
+  /* .details{
+    margin:0;
+    height:30vh;
+    width: 18vw;
+    background-color: var(--bg-color);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+  .details > p {
+    font-size:12px;
+    font-weight: 700;
+    padding:3px;
+    margin:0;
+    width:100%;
+    text-align:center;
+    box-shadow: 0px 1px 4px var(--aux-color);
+  }
+
+  .details > .list {
+    width:18vw;
+    height:25vh;
+    border:1px solid red;
+  } */
+
+
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    .textContainer {
+      display: none;
+    }
+  }
+  

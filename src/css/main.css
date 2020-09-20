@@ -1,0 +1,16 @@
+:root{
+    --main-color: #4a4d4a;
+    --lighten-main: #e7e7e7;
+    --lighten-aux: #f6f6f6;
+    --aux-color: #caccca;
+    --bg-color: #f1f1f1;
+    --text-color: #3B403A;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+html, body{
+    overflow:hidden;
+}

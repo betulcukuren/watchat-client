@@ -1,0 +1,89 @@
+.messageBox {
+    font-size:14px;
+    background: #F3F3F3;
+    /* border-radius: 3px; */
+    padding: 8px 16px;
+    margin:0;
+    color: white;
+    display: inline-block;
+    max-width: 60%;
+  }
+  
+  .messageText {
+    width: 100%;
+    letter-spacing: 0;
+    float: left;
+    font-size: 14px;
+    word-wrap: break-word;
+    margin:0px;
+  }
+  
+  .messageText img {
+    vertical-align: middle;
+  }
+  
+  .messageContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2%;
+    margin-top: 3px;
+  }
+  
+  .sentText {
+    display: flex;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--main-color);
+    font-size:12px;
+    margin:0;
+    width:10vw;
+    word-break: break-all;
+    font-weight: 700;
+  }
+  
+  .pl-10 {
+    padding-left: 10px;
+  }
+  
+  .pr-10 {
+    padding-right: 10px;
+  }
+  
+  .justifyStart {
+    justify-content: flex-start;
+  }
+  
+  .justifyEnd {
+    justify-content: flex-end;
+  }
+  
+  .colorWhite {
+    color: white;
+  }
+  
+  .colorDark {
+    color: #353535;
+  }
+
+  .backgroundDark{
+    background: var(--aux-color);
+    box-shadow: 3px 3px 5px #ddd;
+  }
+  
+  .backgroundPurple{
+    background: var(--main-color);
+    box-shadow: 3px 3px 5px #ddd;
+  }
+  
+  .backgroundLight {
+    background:var(--lighten-aux);
+    box-shadow: 3px 3px 5px #ddd;
+  }
+
+  .time{
+    color:var(--main-color);
+    font-size:10px;
+    padding:0;
+    margin:0;
+    float:right;
+  }

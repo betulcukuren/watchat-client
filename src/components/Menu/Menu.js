@@ -1,16 +1,16 @@
 import React from 'react';
 import '../../css/main.css';
 import './Menu.css';
-import { VscGithub } from 'react-icons/vsc';
-
+import { BsArrowReturnLeft } from 'react-icons/bs';
 
 const Menu = () => (
   <div className="menu">
-    <label class="switch">
+    <label className="switch">
       <input type="checkbox"/>
-      <span class="slider"></span>
+      <span className="slider"></span>
     </label>
-    <a href="https://github.com/betulgundogdu"><VscGithub/></a>
+    <a href="/" className="return"><BsArrowReturnLeft className="icon"/></a>
+
   </div>
 );
 

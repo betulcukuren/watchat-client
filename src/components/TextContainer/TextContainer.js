@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsArrowReturnLeft } from 'react-icons/bs';
+import { VscGithub } from 'react-icons/vsc';
 
 import '../../css/main.css';
 import './TextContainer.css';
@@ -7,7 +7,7 @@ import './TextContainer.css';
 const TextContainer = ({ users, room }) => (
     <div className="textContainer">
         <p className="title">{room}</p>
-        <p className="count">{users.length} people are online</p>
+        <p className="count">{users.length} people online</p>
         {
         users
           ? (
@@ -33,7 +33,7 @@ const TextContainer = ({ users, room }) => (
         </div> }
       </div> */}
       <div className="options">
-        <a href="/" className="return"><BsArrowReturnLeft className="icon"/><span>back</span></a>
+        <a href="https://github.com/betulgundogdu"><VscGithub/></a>
       </div>
     </div>
 );

@@ -57,11 +57,11 @@ const Chat = ({ location }) => {
   return (
     <div className="outerContainer">
       <Menu/> 
-      <TextContainer users={users} room={room}/>
       <div className="container">
           <Messages messages={messages} name={name}/>
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
       </div>
+      <TextContainer users={users} room={room}/>
     </div>
   );  
 }

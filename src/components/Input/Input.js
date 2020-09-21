@@ -8,8 +8,10 @@ import {MdAttachFile} from 'react-icons/md';
 
 const Input = ({ setMessage, sendMessage, message }) => (
   <form className="form">
-    <button className="emoji button" onClick={e => sendMessage(e)}  style={{color: '#caccca'}}><GrEmoji/></button>
-    <button className="file button" onClick={e => sendMessage(e)}  style={{color: '#caccca'}}><MdAttachFile/></button>
+    <div className="icon group">
+      <button className="emoji button" onClick={e => sendMessage(e)}  style={{color: '#caccca'}}><GrEmoji/></button>
+      <button className="file button" onClick={e => sendMessage(e)}  style={{color: '#caccca'}}><MdAttachFile/></button>
+    </div>
     <input
       className="input"
       type="text"

@@ -1,28 +1,35 @@
 .form {
     align-self: center ;
     display: flex;
+    background: var(--bg-color);
     border:1px solid var(--bg-color);
-    height:15%;
-    width:95%;
+    height:6em;
+    width:100%;
     display:flex;
-    justify-content:space-evenly;
+    justify-content:center;
     align-items:center;
     padding-left: .5em;
     /* box-shadow: inset 0px 1px 2px var(--aux-color); */
   }
+
+  .icon.group{
+    width:5em;
+    height:3em;
+    display:flex;
+    justify-content:flex-end;
+  }
   
   .input {
     font-size:14px;
-    border: none;
     border-radius: 0;
-    width: 80%;
-    height:50%;
+    width: 50em;
+    height:3em;
     text-indent: 1.5em;
     background-color: #fff;
-    border-top-left-radius: 35px;
-    border-top-right-radius: 35px;
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
     border:1px solid var(--aux-color);
 
     /* border:1px solid purple; */
@@ -40,15 +47,11 @@
   }
 
   .button {
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-block;
     border: none;
-    padding:.1em;
-    padding-top:.4em;
-    height:50%;
-    width:auto;
     font-size:26px;
+    margin:0;
+    margin-top:.2em;
+    padding:.2em;
     background-color:transparent
     /* border:1px solid red; */
   }

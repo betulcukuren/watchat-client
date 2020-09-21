@@ -1,8 +1,8 @@
 .messageBox {
     font-size:14px;
     background: #F3F3F3;
-    border-radius: 16px;
-    padding: 8px 16px;
+    border-radius: 1em;
+    padding: .5em 1em;
     margin:0;
     color: white;
     display: inline-block;
@@ -26,7 +26,7 @@
     display: flex;
     justify-content: flex-end;
     padding: 0 2%;
-    margin-top: 3px;
+    margin-top: .2em;
   }
   
   .sentText {
@@ -42,11 +42,11 @@
   }
   
   .pl-10 {
-    padding-left: 10px;
+    padding-left: 1em;
   }
   
   .pr-10 {
-    padding-right: 10px;
+    padding-right: 1em;
   }
   
   .justifyStart {
@@ -66,23 +66,23 @@
   }
 
   .backgroundDark{
-    background: var(--aux-color);
-    box-shadow: 3px 3px 5px #ddd;
+    background: var(--main-color);
+    box-shadow: .3em .3em .5em #ddd;
   }
   
   .backgroundPurple{
     background: var(--main-color);
-    box-shadow: 3px 3px 5px #ddd;
+    box-shadow: .3em .3em .5em #ddd;
   }
   
   .backgroundLight {
     background: #fff;
-    box-shadow: 3px 3px 5px #ddd;
+    box-shadow: .3em .3em .5em #ddd;
   }
     
   .backgroundTransparent {
     background: transparent;
-    box-shadow: 3px 3px 5px #ddd;
+    box-shadow: .3em .3em .5em #ddd;
   }
 
   .time{

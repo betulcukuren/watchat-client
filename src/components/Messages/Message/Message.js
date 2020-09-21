@@ -19,7 +19,7 @@ const Message = ({ message: { text, user, color }, name }) => {
           <div className="messageBox backgroundDark" style={{
                     borderBottomRightRadius: '0px'
               }}>
-            <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
+            <p className="messageText colorLight">{ReactEmoji.emojify(text)}</p>
             {/* <p className="time">18:36</p> */}
           </div>
         </div>

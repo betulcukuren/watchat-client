@@ -7,11 +7,11 @@ import './TextContainer.css';
 const TextContainer = ({ users, room }) => (
     <div className="textContainer">
         <p className="title">{room}</p>
-        <p className="count">{users.length} people online</p>
         {
         users
           ? (
-              <div className="activeContainer">             
+              <div className="activeContainer">  
+                  <p className="count">{users.length} people online</p>           
                   {users.map(({name, colorCode}) => (
                     <div key={name} className="activeItem">
                       <img src={`https://ui-avatars.com/api/?name=${name}?&length=1&rounded=true&size=20&background=${colorCode}&color=f6f6f6`} alt="avatar"/>

@@ -17,8 +17,6 @@
     padding: 1px;
     height: 100vh;
     width: 77vw;
-    box-shadow: inset 2px 2px 5px var(--aux-color);
-
   }
   
   @media (min-width: 320px) and (max-width: 1200px) {

@@ -64,4 +64,8 @@
     .button {
       font-size:22px !important;
     }
+
+    .input{
+      width:60em;
+    }
   }

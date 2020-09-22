@@ -43,7 +43,6 @@
   .button > svg  {
     stroke: var(--main-color) !important;
     fill: var(--main-color) !important;
-
   }
 
   .button {
@@ -52,7 +51,8 @@
     margin:0;
     margin-top:.2em;
     padding:.2em;
-    background-color:transparent
+    background-color:transparent;
+    border-radius: 1em;
     /* border:1px solid red; */
   }
   

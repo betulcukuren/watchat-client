@@ -23,3 +23,7 @@ html[data-theme='dark'] {
 html, body{
     overflow:hidden;
 }
+
+button {
+    cursor:pointer;
+}

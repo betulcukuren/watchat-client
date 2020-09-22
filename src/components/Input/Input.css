@@ -1,8 +1,6 @@
 .form {
     align-self: center ;
     display: flex;
-    background: var(--bg-color);
-    border:1px solid var(--bg-color);
     height:14vh;
     width:100%;
     display:flex;
@@ -30,8 +28,6 @@
     border-top-right-radius: 2em;
     border-bottom-left-radius: 2em;
     border-bottom-right-radius: 2em;
-    border:1px solid var(--aux-color);
-
     /* border:1px solid purple; */
   }
   
@@ -40,18 +36,12 @@
     /* border: 1px solid var(--main-color); */
   }
   
-  .button > svg  {
-    stroke: var(--main-color) !important;
-    fill: var(--main-color) !important;
-  }
-
   .button {
     border: none;
     font-size:26px;
     margin:0;
     margin-top:.2em;
     padding:.2em;
-    background-color:transparent;
     border-radius: 1em;
     /* border:1px solid red; */
   }

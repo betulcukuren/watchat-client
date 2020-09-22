@@ -2,7 +2,6 @@
     font-size:12px;
     text-decoration: none;
     text-transform: uppercase;
-    color: var(--main-color);
     font-weight: 700;
     letter-spacing:2px;
   }
@@ -19,9 +18,7 @@
     justify-content: center;
     width:18vw;
     height:100vh;
-    background-color: var(--bg-color);
     font-size:14px;
-    color: var(--main-color);
     padding-top:1.5em;
     padding-bottom:10vh;
 
@@ -35,7 +32,6 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border-bottom:.1em solid var(--lighten-main);
   }
 
   .users {
@@ -69,7 +65,6 @@
     margin: .1em auto;
     width:80%;
     height:5vh;
-    box-shadow: 0px 1px 2px var(--aux-color);   
   }
 
   .users > .item  > p {
@@ -111,7 +106,6 @@
     width:100%;
     overflow:auto;
     margin-top:1em; 
-    border:1px solid var(--lighten-main);
     overflow:hidden;
   }
   
@@ -130,19 +124,8 @@
     width:5em;
     border:none;
     border-radius: 0;
-    border-bottom:1px solid var(--aux-color);
-    color: var(--main-color);
     margin:.1em;
     padding:.5em;
-  }
-
-  .sections > button:hover, button:active{
-    background-color: var(--lighten-main);
-  }
-
-  .sections > button:focus{
-    background-color: var(--lighten-main);
-    border-bottom:1px solid var(--main-color);
   }
 
   .invite{
@@ -152,6 +135,7 @@
     align-items: center;
     padding-right:1em;
     margin-bottom: .5em;
+    border:none;
   }
 
 
@@ -159,36 +143,6 @@
     font-size:1.5em;
     margin:.2em;
   }
-
-  /* .details{
-    margin:0;
-    height:30vh;
-    width: 18vw;
-    background-color: var(--bg-color);
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-  }
-
-  .details > p {
-    font-size:12px;
-    font-weight: 700;
-    padding:3px;
-    margin:0;
-    width:100%;
-    text-align:center;
-    box-shadow: 0px 1px 4px var(--aux-color);
-  }
-
-  .details > .list {
-    width:18vw;
-    height:25vh;
-    border:1px solid red;
-  } */
-
-
 
   @media (min-width: 320px) and (max-width: 1200px)  {
     .detail {

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../css/main.css';
 import './Input.css';
 import {RiSendPlane2Fill} from 'react-icons/ri';
 import {GrEmoji} from 'react-icons/gr';

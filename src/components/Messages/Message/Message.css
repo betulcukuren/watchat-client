@@ -1,10 +1,8 @@
 .messageBox {
     font-size:14px;
-    background: #F3F3F3;
     border-radius: 1em;
     padding: .5em 1em;
     margin:0;
-    color: white;
     display: inline-block;
     max-width: 60%;
   }
@@ -33,22 +31,13 @@
     display: flex;
     align-items: center;
     font-family: 'Open Sans', sans-serif;
-    color: var(--main-color);
     font-size:10px;
     margin:0;
     width:10vw;
     word-break: break-all;
     font-weight: 700;
   }
-  
-  .pl-10 {
-    padding-left: 1em;
-  }
-  
-  .pr-10 {
-    padding-right: 1em;
-  }
-  
+    
   .justifyStart {
     justify-content: flex-start;
   }
@@ -56,37 +45,8 @@
   .justifyEnd {
     justify-content: flex-end;
   }
-  
-  .colorWhite {
-    color: white;
-  }
-  
-  .colorDark {
-    color: #353535;
-  }
-
-  .backgroundDark{
-    background: var(--main-color);
-    box-shadow: .3em .3em .5em #ddd;
-  }
-  
-  .backgroundPurple{
-    background: var(--main-color);
-    box-shadow: .3em .3em .5em #ddd;
-  }
-  
-  .backgroundLight {
-    background: #fff;
-    box-shadow: .3em .3em .5em #ddd;
-  }
-    
-  .backgroundTransparent {
-    background: transparent;
-    box-shadow: .3em .3em .5em #ddd;
-  }
-
+ 
   .time{
-    color:var(--main-color);
     font-size:10px;
     padding:0;
     margin:0;

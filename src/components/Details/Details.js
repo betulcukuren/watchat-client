@@ -1,7 +1,5 @@
 import React from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
-
-import '../../css/main.css';
 import './Details.css';
 
 const TextContainer = ({ users, room }) => (

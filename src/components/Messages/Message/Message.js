@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../css/main.css';
 import './Message.css';
 
 import ReactEmoji from 'react-emoji';
@@ -16,10 +15,10 @@ const Message = ({ message: { text, user, color }, name }) => {
     isSentByCurrentUser
       ? (
         <div className="messageContainer justifyEnd">
-          <div className="messageBox backgroundDark" style={{
+          <div className="messageBox userMessage" style={{
                     borderBottomRightRadius: '0px'
               }}>
-            <p className="messageText colorLight">{ReactEmoji.emojify(text)}</p>
+            <p className="messageText">{ReactEmoji.emojify(text)}</p>
             {/* <p className="time">18:36</p> */}
           </div>
         </div>
@@ -28,12 +27,12 @@ const Message = ({ message: { text, user, color }, name }) => {
           user === 'system'
           ? (
           <div className="messageContainer justifyStart">
-            <div className="messageBox backgroundTransparent" style={{borderRadius: '0px'}}>             
+            <div className="messageBox systemMessage" style={{borderRadius: '0px'}}>             
               <p className="sentText" style={{
                   color: '#' + color,
                   fontSize:'10px'               
                 }}> {user}</p>
-              <p className="messageText colorDark " style={{
+              <p className="messageText" style={{
                   color: '#' + color,
                   fontSize:'10px'
                 }}> {ReactEmoji.emojify(text)}</p>
@@ -44,13 +43,13 @@ const Message = ({ message: { text, user, color }, name }) => {
           ) 
           : (
             <div className="messageContainer justifyStart">
-              <div className="messageBox backgroundLight" style={{
+              <div className="messageBox otherMessage" style={{
                     borderBottomLeftRadius: '0px'
               }}>           
                 <p className="sentText" style={{
                     color: '#' + color
                   }}> {user}</p>
-                <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
+                <p className="messageText">{ReactEmoji.emojify(text)}</p>
                 {/* <p className="time">18:36</p> */}
               </div>
             </div>

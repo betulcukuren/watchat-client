@@ -17,15 +17,16 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   .slider {
-    background-color: ${({ theme }) => theme.aux};
+    background-color: ${({ theme }) => theme.toggleBg};
+    border: 1px solid ${({ theme }) => theme.linkActive};
   }
   
   .slider:before {
-    background-color: white;
+    background-color: ${({ theme }) => theme.linkActive};
   }
   
   input:checked + .slider {
-    background-color: ${({ theme }) => theme.main};
+    background-color: ${({ theme }) => theme.toggleBg};
   }
   
   input:focus + .slider {
@@ -49,7 +50,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 .tool > .icon{
-  fill: ${({ theme }) => theme.main};
+  fill: ${({ theme }) => theme.buttonColor};
 }
 
 .tool:hover{
@@ -63,10 +64,31 @@ export const GlobalStyles = createGlobalStyle`
  
   .detail {
     background-color:  ${({ theme }) => theme.bg};
+  }
+
+  .count{
+    color:  ${({ theme }) => theme.text};
+  }
+
+  .invite{
+    border: 1px solid ${({ theme }) => theme.main};
+  }
+
+  .invite:hover{
+    opacity:.5;
+  }
+
+  .invite > span{
     color:  ${({ theme }) => theme.main};
   }
 
+  .invite > .icon{
+    stroke:  ${({ theme }) => theme.main};
+    fill:  ${({ theme }) => theme.main};
+  }
+
   .detail > .header{
+    color: ${({ theme }) => theme.text};
     border-bottom:.1em solid  ${({ theme }) => theme.lightenMain};
   }
 
@@ -76,6 +98,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .users > .item {
+    background-color: ${({ theme }) => theme.itemBg};
     box-shadow: 0px 1px 2px  ${({ theme }) => theme.shadow};   
   }
 
@@ -90,12 +113,14 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .sections > button:hover, button:active{
-    background-color:  ${({ theme }) => theme.lightenMain};
+    background-color:  ${({ theme }) => theme.linkActiveBg};
+    color: ${({ theme }) => theme.linkActive};
   }
 
   .sections > button:focus{
-    background-color:  ${({ theme }) => theme.lightenMain};
-    border-bottom:1px solid  ${({ theme }) => theme.main};
+    background-color:  ${({ theme }) => theme.linkActiveBg};
+    border-bottom:1px solid  ${({ theme }) => theme.linkActive};
+    color: ${({ theme }) => theme.linkActive};
   }
 
    
@@ -106,6 +131,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .input {
+    color: ${({ theme }) => theme.inputColor};
     background-color: ${({ theme }) => theme.inputBg};
     border:1px solid ${({ theme }) => theme.aux};
 
@@ -131,35 +157,22 @@ export const GlobalStyles = createGlobalStyle`
     color:  ${({ theme }) => theme.main};
   }
 
-  .colorWhite {
-    color:  ${({ theme }) => theme.message};
-  }
-  
-  .colorDark {
-    color:  ${({ theme }) => theme.text};
-  }
-
-  .backgroundDark{
-    background:  ${({ theme }) => theme.main};
-    box-shadow: .3em .3em .5em  ${({ theme }) => theme.messageShadow};
-  }
-  
   .userMessage{
-    background: ${({ theme }) => theme.main};
+    background: ${({ theme }) => theme.userMessageBg};
     box-shadow: .3em .3em .5em ${({ theme }) => theme.messageShadow};
   }
 
   .userMessage > .messageText {
-    color: ${({ theme }) => theme.message}
+    color: ${({ theme }) => theme.white}
   }
   
   .otherMessage {
-    background: #fff;
+    background: ${({ theme }) => theme.otherMessageBg};
     box-shadow: .3em .3em .5em ${({ theme }) => theme.messageShadow};
   }
 
   .otherMessage > .messageText {
-    color: ${({ theme }) => theme.text}
+    color: ${({ theme }) => theme.otherMessage}
   }
     
   .systemMessage {

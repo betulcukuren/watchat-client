@@ -2,7 +2,7 @@
     font-size:14px;
     border-radius: 1em;
     padding: .5em 1em;
-    margin:0;
+    margin-bottom:.3em;
     display: inline-block;
     max-width: 60%;
   }
@@ -26,7 +26,8 @@
     padding: 0 2%;
     margin-top: .2em;
   }
-  
+
+
   .sentText {
     display: flex;
     align-items: center;

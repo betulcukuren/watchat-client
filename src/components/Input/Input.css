@@ -45,6 +45,16 @@
     border-radius: 1em;
     /* border:1px solid red; */
   }
+
+  .emoji-mart{
+    position:absolute;
+    width:20em;
+    height:30em;
+    top:0;
+    bottom:0;
+    left:10em;
+    margin:auto;
+  }
   
   @media (min-width: 480px) and (max-width: 1200px) {
     .form{

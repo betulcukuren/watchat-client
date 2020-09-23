@@ -1,8 +1,20 @@
 .messages {
-    padding: 3% 0%;
-    overflow: auto;
+    padding: 2.5em 4em;
+    overflow-y: auto;
     flex: auto;
     height: 86vh;
   }
 
+.css-y1c0xs::-webkit-scrollbar {
+  display: none;
+}
   
+  /* Hide scrollbar for IE, Edge and Firefox */
+.css-y1c0xs {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.css-1qyrjaz, [data-css-1qyrjaz]{
+  content: "A" !important; 
+}

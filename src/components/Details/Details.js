@@ -6,7 +6,7 @@ const TextContainer = ({ users, room }) => (
     <div className="detail">
       <div className="header">
         <p className="title">{room}</p>
-        <button className="invite"><AiOutlineUserAdd className="icon"/> Invite </button>
+        <button className="invite"><AiOutlineUserAdd className="icon"/><span> Invite </span></button>
       </div>
       <p className="count">{users.length} people joined</p>           
         {

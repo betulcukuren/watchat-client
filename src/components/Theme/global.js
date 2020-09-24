@@ -131,7 +131,7 @@ export const GlobalStyles = createGlobalStyle`
   /***** input colors ******/
   .form {
     background: ${({ theme }) => theme.formBg};
-    border:1px solid ${({ theme }) => theme.bg};
+    // border:1px solid ${({ theme }) => theme.bg};
   }
 
   .input {

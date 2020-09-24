@@ -7,7 +7,7 @@
     justify-content:center;
     align-items:center;
     padding-left: .5em;
-    margin:1.5em;
+    margin-bottom:1.5em;
     /* box-shadow: inset 0px 1px 2px var(--aux-color); */
   }
 
@@ -24,6 +24,7 @@
     width: 55vw;
     height:6.5vh;
     text-indent: 1.5em;
+    background-color: #fff;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em;
     border-bottom-left-radius: 2em;
@@ -65,5 +66,9 @@
 
     .input{
       width:60em;
+    }
+
+    .form{
+      margin-bottom: 3em;
     }
   }

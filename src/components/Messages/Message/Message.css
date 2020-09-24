@@ -2,7 +2,7 @@
     font-size:14px;
     border-radius: 1em;
     padding: .5em 1em;
-    margin-bottom:.3em;
+    margin-bottom:.05em;
     display: inline-block;
     max-width: 60%;
   }
@@ -54,4 +54,9 @@
     float:right;
   }
   
- 
+ .systemMessage{
+    right:0;
+    left:0;
+    margin: .5em auto;
+    border-radius: '0px';
+ }

@@ -180,7 +180,7 @@ export const GlobalStyles = createGlobalStyle`
   }
     
   .systemMessage {
-    background: transparent;
+    background: ${({ theme }) => theme.systemMsgBg};
     box-shadow: .3em .3em .5em ${({ theme }) => theme.messageShadow};
   }
 

@@ -32,6 +32,10 @@ export const GlobalStyles = createGlobalStyle`
   input:focus + .slider {
     box-shadow: 0 0 1px ${({ theme }) => theme.shadow};
   }
+
+  .typing{
+    color:  ${({ theme }) => theme.linkActive}
+  }
   
   /****** menu colors ******/
 
@@ -141,7 +145,7 @@ export const GlobalStyles = createGlobalStyle`
     background: transparent;
   }
   
-  .button > svg  {
+  .fileLabel > svg, .button > svg  {
     stroke: ${({ theme }) => theme.main} !important;
     fill: ${({ theme }) => theme.main}!important;
   }

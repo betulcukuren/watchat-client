@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     font-family: 'Manrope', sans-serif;
   }
   
@@ -57,12 +57,12 @@
     border-radius: 50%;
   }
   
-
   input:checked + .slider:before {
     -webkit-transform: translateX(1.6em);
     -ms-transform: translateX(1.6em);
     transform: translateX(1.6em);
   }
+
  
   @media (min-width: 320px) and (max-width: 1200px) {
     .outerContainer {

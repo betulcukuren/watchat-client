@@ -1,7 +1,7 @@
 .form {
     align-self: center ;
     display: flex;
-    height:14vh;
+    height:16vh;
     width:100%;
     display:flex;
     justify-content:center;
@@ -46,14 +46,12 @@
     /* border:1px solid red; */
   }
 
-  .emoji-mart{
-    position:absolute;
-    width:20em;
-    height:30em;
-    top:0;
-    bottom:0;
-    left:10em;
-    margin:auto;
+  .file > input{
+    display:none;
+  }
+
+  .fileLabel{
+    cursor:pointer;
   }
   
   @media (min-width: 480px) and (max-width: 1200px) {

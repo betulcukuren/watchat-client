@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import queryString from 'query-string';
 import io from "socket.io-client";
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from '../Theme/theme';
+import { GlobalStyles } from '../Theme/global';
 
 import Details from '../Details/Details';
 import Messages from '../Messages/Messages';
 import Input from '../Input/Input';
 import Menu from '../Menu/Menu';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from '../Theme/theme';
-import { GlobalStyles } from '../Theme/global';
+// import Typing from '../Typing/Typing';
+
 import './Chat.css';
 
 let socket;
@@ -55,6 +57,10 @@ const Chat = ({ location }) => {
     socket.on("roomData", ({ users }) => {
       setUsers(users);
     });
+
+    socket.on('typing', () => {
+      socket.emit('typing', {text: `Someone is typing!` });
+    });
 }, []);
 
   const sendMessage = (event) => {
@@ -77,7 +83,8 @@ const Chat = ({ location }) => {
         <Menu/> 
         <div className="container">
             <Messages messages={messages} name={name}/>
-            <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+            {/* <Typing/> */}
+            <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
         </div>
         <Details users={users} room={room}/>
       </div>

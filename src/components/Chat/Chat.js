@@ -72,8 +72,9 @@ const Chat = ({ location }) => {
 
     if(message) {
       socket.current.emit('sendMessage', message, () => setMessage(''));
+      setTyping(false);
     }
-  }, [setMessage, message]);
+  }, [setMessage, message, setTyping]);
 
   const onMessage = useCallback((e) => {
     const {currentTarget: {value} } = e;

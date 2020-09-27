@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import queryString from 'query-string';
 import io from "socket.io-client";
 import { ThemeProvider } from 'styled-components';
@@ -9,23 +9,24 @@ import Details from '../Details/Details';
 import Messages from '../Messages/Messages';
 import Input from '../Input/Input';
 import Menu from '../Menu/Menu';
-// import Typing from '../Typing/Typing';
+import Typing from '../Typing/Typing';
 
 import './Chat.css';
-
-let socket;
 
 const Chat = ({ location }) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
-  const [users, setUsers] = useState('');
+  const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
+  const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
+  const ENDPOINT = process.env.REACT_APP_ENDPOINT;
+
+  const socket = useRef(io(ENDPOINT));
 
   const [theme, setTheme] = useState('light');
   // The function that toggles between themes
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     // if the theme is not light, then set it to dark
     if (theme === 'light') {
       setTheme('dark');
@@ -33,43 +34,56 @@ const Chat = ({ location }) => {
     } else {
       setTheme('light');
     }
-  }
+  },[theme, setTheme]);
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
-    socket = io(ENDPOINT);
 
     setRoom(room);
     setName(name);
     
-    socket.emit('join', { name, room }, (error) => {
+    socket.current.emit('join', { name, room }, (error) => {
       if(error) {
         alert(error);
       }
     });
-  }, [ENDPOINT, location.search]);
+  }, [socket, ENDPOINT, location.search]);
   
   useEffect(() => {
-    socket.on('message', message => {
+    socket.current.on('message', message => {
       setMessages(messages => [ ...messages, message ]);
     });
     
-    socket.on("roomData", ({ users }) => {
+    socket.current.on("roomData", ({ users }) => {
       setUsers(users);
     });
 
-    socket.on('typing', () => {
-      socket.emit('typing', {text: `Someone is typing!` });
+    socket.current.on("typingStatus", ({users}) => {
+      setUsers(users);
     });
-}, []);
+  }, []);
 
-  const sendMessage = (event) => {
+  useEffect(() => {
+    socket.current.emit('typing', typing);
+  }, [typing, socket])
+
+  const sendMessage = useCallback((event) => {
     event.preventDefault();
 
     if(message) {
-      socket.emit('sendMessage', message, () => setMessage(''));
+      socket.current.emit('sendMessage', message, () => setMessage(''));
     }
-  }
+  }, [setMessage, message]);
+
+  const onMessage = useCallback((e) => {
+    const {currentTarget: {value} } = e;
+    setMessage(value);
+    if(value && !typing){
+      setTyping(true);
+    } else if (!value && typing) {
+      setTyping(false);
+    }
+  }, [setTyping, typing]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -83,8 +97,13 @@ const Chat = ({ location }) => {
         <Menu/> 
         <div className="container">
             <Messages messages={messages} name={name}/>
-            {/* <Typing/> */}
-            <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
+            <Typing users={users} name={name}/> 
+            <Input
+              message={message}
+              setMessage={onMessage}
+              setTyping={setTyping}
+              sendMessage={sendMessage}
+            />
         </div>
         <Details users={users} room={room}/>
       </div>

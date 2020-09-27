@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {memo} from 'react';
 import './Input.css';
 import {RiSendPlane2Fill} from 'react-icons/ri';
 // import {GrEmoji} from 'react-icons/gr';
 import {MdAttachFile, MdKeyboardVoice} from 'react-icons/md';
 
 
-const Input = ({ setMessage, sendMessage, message, setTyping}) => {
+const Input = ({ setMessage, sendMessage, message, typing}) => {
   return(
     <form className="form">
       <div className="icon group">
@@ -22,7 +22,7 @@ const Input = ({ setMessage, sendMessage, message, setTyping}) => {
         type="text"
         placeholder="Type a message..."
         value={message}
-        onChange={({ target: { value } }) => setMessage(value)}
+        onChange={setMessage}
         onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : ''}
         
       />
@@ -32,4 +32,4 @@ const Input = ({ setMessage, sendMessage, message, setTyping}) => {
   );
 }
 
-export default Input;
+export default memo(Input);

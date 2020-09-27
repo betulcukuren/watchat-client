@@ -1,0 +1,10 @@
+.typing {
+    width:100%;
+    font-size:12px;
+    height:1.5em;
+    display:flex;
+    justify-content: center;
+    margin:1em;
+    padding:0;
+    font-style: italic;
+}

@@ -1,21 +1,25 @@
 .form {
     align-self: center ;
     display: flex;
-    height:16vh;
+    height:12vh;
     width:100%;
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
     padding-left: .5em;
-    margin-bottom:1.5em;
+    margin:0;
+    margin-bottom:.8em;
     /* box-shadow: inset 0px 1px 2px var(--aux-color); */
   }
 
   .icon.group{
     width:2em;
-    height:3em;
+    height:2em;
     display:flex;
-    justify-content:flex-end;
+    margin:0;
+    padding:0;
+    align-items:flex-start;
+    justify-content:center;
   }
   
   .input {
@@ -42,7 +46,6 @@
     border: none;
     font-size:26px;
     margin:0;
-    margin-top:.2em;
     padding:.2em;
     border-radius: 1em;
     /* border:1px solid red; */
@@ -63,14 +66,16 @@
 
     .button {
       font-size:22px !important;
+      margin:.2em;
     }
 
     .input{
       width:60vw;
-      height:8.5vh;
+      height:6vh;
+      margin:.1em;
     }
 
     .form{
-      margin-bottom: 3vh;
+      margin-bottom: 5vh;
     }
   }

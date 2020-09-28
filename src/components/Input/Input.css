@@ -8,7 +8,7 @@
     align-items:flex-start;
     padding-left: .5em;
     margin:0;
-    margin-bottom:.8em;
+    margin-bottom:1em;
     /* box-shadow: inset 0px 1px 2px var(--aux-color); */
   }
 
@@ -65,17 +65,16 @@
     }
 
     .button {
-      font-size:22px !important;
-      margin:.2em;
+      font-size:24px !important;
+      margin:0 .1em;
     }
 
     .input{
       width:60vw;
-      height:4vh;
-      margin:.1em;
+      height:6vh;
     }
 
     .form{
-      margin-bottom: 20vh;
+      margin-bottom: 5vh;
     }
   }

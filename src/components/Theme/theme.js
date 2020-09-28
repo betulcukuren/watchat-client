@@ -24,7 +24,7 @@ export const lightTheme = {
   }
   
   export const darkTheme = {
-    main: "#ff7e67",
+    main: "#b04f4f",
     lightenMain: "#0e0d15",
     lightenAux: "#f6f6f6",
     aux: "#232034",
@@ -40,10 +40,10 @@ export const lightTheme = {
     shadow: "#0a090f",
     white: "#fff",
     otherMessageBg: '#181725',
-    userMessageBg: '#eb644d',
-    linkActive: '#ff7e67',
+    userMessageBg: '#b04f4f',
+    linkActive: '#b04f4f',
     linkActiveBg: '#100a1d',
-    buttonColor: "#ff7e67", /* 3e978b */
+    buttonColor: "#b04f4f", /* 3e978b */
     toggleBg: "#181725",
     itemBg: "#1a1828",
     systemMsgBg: "#181725"

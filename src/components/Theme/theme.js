@@ -20,19 +20,21 @@ export const lightTheme = {
   inputColor: "#4a4d4a",
   toggleBg: "#e7e7e7",
   itemBg: "#f1f1f1",
-  systemMsgBg: "#ececec"
+  systemMsgBg: "#ececec",
+  systemMsg: "#3B403A",
+  settingsBtn: "#4a4d4a"
   }
   
   export const darkTheme = {
-    main: "#b04f4f",
+    main: "#7f5d73",
     lightenMain: "#0e0d15",
     lightenAux: "#f6f6f6",
     aux: "#232034",
     bg: "#161422",
-    inputBg: "#0e0d15",
+    inputBg: "#100f18",
     inputColor: "#fff",
     formBg: "#0e0d15",
-    text: "#8d8d97",
+    text: "#86878b",
     otherMessage: "#fff",
     messageBox: "#161422",
     message: "#161422",
@@ -40,11 +42,13 @@ export const lightTheme = {
     shadow: "#0a090f",
     white: "#fff",
     otherMessageBg: '#181725',
-    userMessageBg: '#b04f4f',
-    linkActive: '#b04f4f',
+    userMessageBg: '#3a2734',
+    linkActive: '#47484a',
     linkActiveBg: '#100a1d',
-    buttonColor: "#b04f4f", /* 3e978b */
+    buttonColor: "#7f5d73", /* 3e978b */
     toggleBg: "#181725",
     itemBg: "#1a1828",
-    systemMsgBg: "#181725"
+    systemMsgBg: "#181725",
+    systemMsg: "#e38240",
+    settingsBtn: "#86878b"
   }

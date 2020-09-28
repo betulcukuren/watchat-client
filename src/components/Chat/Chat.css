@@ -14,55 +14,6 @@
     width: 77vw;
   }
 
-  .switch {
-    top:0;
-    left:.5em;
-    position: absolute;
-    display: inline-block;
-    width: 3.1em;
-    height: 1.5em;
-    margin:.3em;
-    margin-top:1.5em; 
-    z-index:999;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 1.3em;  
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 1.1em;
-    width: 1.1em;
-    left: .15em;
-    bottom: .15em;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(1.6em);
-    -ms-transform: translateX(1.6em);
-    transform: translateX(1.6em);
-  }
-
- 
   @media (min-width: 320px) and (max-width: 1200px) {
     .outerContainer {
       height: 100%;

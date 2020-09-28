@@ -5,7 +5,7 @@ import {RiSendPlane2Fill} from 'react-icons/ri';
 import {MdAttachFile, MdKeyboardVoice} from 'react-icons/md';
 
 
-const Input = ({ setMessage, sendMessage, message, typing}) => {
+const Input = ({ setMessage, sendMessage, message}) => {
   return(
     <form className="form">
       <div className="icon group">

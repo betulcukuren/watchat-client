@@ -34,7 +34,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .typing{
-    color:  ${({ theme }) => theme.linkActive}
+    color:  ${({ theme }) => theme.systemMsg}
   }
   
   /****** menu colors ******/
@@ -49,8 +49,12 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 .return{
-  border:.2em solid ${({ theme }) => theme.main};
+  // border:.2em solid ${({ theme }) => theme.settingsBtn};
   /* background-color: ${({ theme }) => theme.aux}; */
+}
+
+.return > .icon {
+  fill: ${({ theme }) => theme.settingsBtn};
 }
 
 .tool > .icon{
@@ -59,6 +63,10 @@ export const GlobalStyles = createGlobalStyle`
 
 .tool:hover{
   background-color: ${({ theme }) => theme.lightenMain};
+}
+
+.toggle > svg {
+  fill: ${({ theme }) => theme.settingsBtn};
 }
 
   /***** details colors *****/

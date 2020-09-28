@@ -10,6 +10,8 @@ import Messages from '../Messages/Messages';
 import Input from '../Input/Input';
 import Menu from '../Menu/Menu';
 import Typing from '../Typing/Typing';
+import Toggles from '../Toggles/Toggles';
+import WindowFocusHandler from '../WindowFocusHandler/WindowFocusHandler';
 
 import './Chat.css';
 
@@ -20,21 +22,11 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState('');
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = process.env.REACT_APP_ENDPOINT;
-
-  const socket = useRef(io(ENDPOINT));
-
   const [theme, setTheme] = useState('light');
-  // The function that toggles between themes
-  const toggleTheme = useCallback(() => {
-    // if the theme is not light, then set it to dark
-    if (theme === 'light') {
-      setTheme('dark');
-    // otherwise, it should be light
-    } else {
-      setTheme('light');
-    }
-  },[theme, setTheme]);
+  const [notification, setNotification] = useState(true);
+
+  const ENDPOINT = process.env.REACT_APP_ENDPOINT;
+  const socket = useRef(io(ENDPOINT));
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
@@ -86,15 +78,34 @@ const Chat = ({ location }) => {
     }
   }, [setTyping, typing]);
 
+  const toggleTheme = useCallback((e) => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  },[theme, setTheme]);
+ 
+  const toggleNotification = useCallback((e) => {
+    if (notification === true) {
+      setNotification(false);
+    } else {
+      setNotification(true);
+    }
+  },[notification, setNotification]);
+  
+
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
     <>
       <GlobalStyles />
       <div className="outerContainer">
-        <label className="switch" >
-          <input type="checkbox" onChange={toggleTheme}/>
-          <span className="slider"></span>
-        </label>
+        {notification && <WindowFocusHandler setNotification={setNotification}/>}
+        <Toggles toggleTheme={toggleTheme}
+                 theme={theme}
+                 toggleNotification={toggleNotification}
+                 notification={notification}
+                 />
         <Menu/> 
         <div className="container">
             <Messages messages={messages} name={name}/>
@@ -102,7 +113,6 @@ const Chat = ({ location }) => {
             <Input
               message={message}
               setMessage={onMessage}
-              setTyping={setTyping}
               sendMessage={sendMessage}
             />
         </div>

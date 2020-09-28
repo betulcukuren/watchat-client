@@ -10,7 +10,7 @@ const Menu = () => (
       <a href="/" className="tool"><MdOndemandVideo className="icon"/></a>
       <a href="/" className="tool"><MdPersonalVideo className="icon"/></a>
     </div>
-    <a href="/" className="tool return"><BsArrowReturnLeft className="icon"/></a>
+    <a href="/" className="return"><BsArrowReturnLeft className="icon"/></a>
   </div>
 );
 

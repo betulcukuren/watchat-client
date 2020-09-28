@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  useState, useEffect, useCallback, useRef,
+} from 'react';
 import queryString from 'query-string';
-import io from "socket.io-client";
+import io from 'socket.io-client';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '../Theme/theme';
-import { GlobalStyles } from '../Theme/global';
+import GlobalStyles from '../Theme/global';
 
-import Details from '../Details/Details';
-import Messages from '../Messages/Messages';
-import Input from '../Input/Input';
-import Menu from '../Menu/Menu';
-import Typing from '../Typing/Typing';
-import Toggles from '../Toggles/Toggles';
-import WindowFocusHandler from '../WindowFocusHandler/WindowFocusHandler';
+import { Details } from '../Details';
+import Messages from '../Messages';
+import Input from '../Input';
+import { Menu } from '../Menu';
+import { Typing } from '../Typing';
+import { Toggles } from '../Toggles';
+import { WindowFocusHandler } from '../WindowFocusHandler';
 
 import './Chat.css';
 
@@ -29,98 +31,98 @@ const Chat = ({ location }) => {
   const socket = useRef(io(ENDPOINT));
 
   useEffect(() => {
-    const { name, room } = queryString.parse(location.search);
+    const { name: username, room: userRoom } = queryString.parse(location.search);
 
-    setRoom(room);
-    setName(name);
-    
-    socket.current.emit('join', { name, room }, (error) => {
-      if(error) {
-        alert(error);
+    setRoom(userRoom);
+    setName(username);
+
+    socket.current.emit('join', { name: username, room: userRoom }, (error) => {
+      if (error) {
+        console.log(error);
       }
     });
   }, [socket, ENDPOINT, location.search]);
-  
+
   useEffect(() => {
-    socket.current.on('message', message => {
-      setMessages(messages => [ ...messages, message ]);
-    });
-    
-    socket.current.on("roomData", ({ users }) => {
-      setUsers(users);
+    socket.current.on('message', (msg) => {
+      setMessages((msgs) => [...msgs, msg]);
     });
 
-    socket.current.on("typingStatus", ({users}) => {
-      setUsers(users);
+    socket.current.on('roomData', ({ users: userList }) => {
+      setUsers(userList);
+    });
+
+    socket.current.on('typingStatus', ({ users: userList }) => {
+      setUsers(userList);
     });
   }, []);
 
   useEffect(() => {
     socket.current.emit('typing', typing);
-  }, [typing, socket])
+  }, [typing, socket]);
 
   const sendMessage = useCallback((event) => {
     event.preventDefault();
 
-    if(message) {
+    if (message) {
       socket.current.emit('sendMessage', message, () => setMessage(''));
       setTyping(false);
     }
   }, [setMessage, message, setTyping]);
 
   const onMessage = useCallback((e) => {
-    const {currentTarget: {value} } = e;
+    const { currentTarget: { value } } = e;
     setMessage(value);
-    if(value && !typing){
+    if (value && !typing) {
       setTyping(true);
     } else if (!value && typing) {
       setTyping(false);
     }
   }, [setTyping, typing]);
 
-  const toggleTheme = useCallback((e) => {
+  const toggleTheme = useCallback(() => {
     if (theme === 'light') {
       setTheme('dark');
     } else {
       setTheme('light');
     }
-  },[theme, setTheme]);
- 
-  const toggleNotification = useCallback((e) => {
+  }, [theme, setTheme]);
+
+  const toggleNotification = useCallback(() => {
     if (notification === true) {
       setNotification(false);
     } else {
       setNotification(true);
     }
-  },[notification, setNotification]);
-  
+  }, [notification, setNotification]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-    <>
-      <GlobalStyles />
-      <div className="outerContainer">
-        {notification && <WindowFocusHandler setNotification={setNotification}/>}
-        <Toggles toggleTheme={toggleTheme}
-                 theme={theme}
-                 toggleNotification={toggleNotification}
-                 notification={notification}
-                 />
-        <Menu/> 
-        <div className="container">
-            <Messages messages={messages} name={name}/>
-            <Typing users={users} name={name}/> 
+      <>
+        <GlobalStyles />
+        <div className="outerContainer">
+          {notification && <WindowFocusHandler setNotification={setNotification} />}
+          <Toggles
+            toggleTheme={toggleTheme}
+            theme={theme}
+            toggleNotification={toggleNotification}
+            notification={notification}
+          />
+          <Menu />
+          <div className="container">
+            <Messages messages={messages} name={name} />
+            <Typing users={users} name={name} />
             <Input
               message={message}
               setMessage={onMessage}
               sendMessage={sendMessage}
             />
+          </div>
+          <Details users={users} room={room} />
         </div>
-        <Details users={users} room={room}/>
-      </div>
-    </>
+      </>
     </ThemeProvider>
-  );  
-}
+  );
+};
 
 export default Chat;

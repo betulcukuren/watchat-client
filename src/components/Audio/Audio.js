@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 
-const Audio = (setNotification, notification) => {
+const audio = '../../audio/notification.mp3';
+const Audio = () => {
   
   return (
-
+    <></>
   );
 };
 

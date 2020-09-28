@@ -1,7 +1,6 @@
-
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+export default createGlobalStyle`
   body {
     transition: all 0.25s linear;
   }
@@ -200,4 +199,4 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.main};
   }
   
-  `
+  `;

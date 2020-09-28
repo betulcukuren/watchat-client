@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import '../../css/main.css';
 import './Join.css';
@@ -18,8 +18,8 @@ export default function SignIn() {
         <div>
           <input placeholder="room id" className="joinInput mt-20" type="text" onChange={(event) => setRoom(event.target.value)} />
         </div>
-        <Link onClick={e => (!name || !room) ? e.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
-          <button className={'joinButton mt-20'} type="submit">join</button>
+        <Link onClick={(e) => ((!name || !room) ? e.preventDefault() : null)} to={`/chat?name=${name}&room=${room}`}>
+          <button className="joinButton mt-20" type="submit">join</button>
         </Link>
       </div>
     </div>

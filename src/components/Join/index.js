@@ -1,5 +1,3 @@
 import Join from './Join';
 
-export {
-    Join
-}
+export default Join;

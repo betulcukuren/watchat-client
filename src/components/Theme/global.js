@@ -103,6 +103,14 @@ export default createGlobalStyle`
     border-bottom:.1em solid  ${({ theme }) => theme.lightenMain};
   }
 
+  .edit {
+    background: transparent;
+  }
+  
+  .edit > svg {
+    fill: ${({ theme }) => theme.buttonColor};
+  }
+
   .invite{
     background-color: transparent;
     color: ${({ theme }) => theme.text}
@@ -111,6 +119,10 @@ export default createGlobalStyle`
   .users > .item {
     background-color: ${({ theme }) => theme.itemBg};
     box-shadow: 0px 1px 2px  ${({ theme }) => theme.shadow};   
+  }
+
+  .username {
+    color: ${({ theme }) => theme.text};
   }
 
   .attachments{
@@ -197,6 +209,27 @@ export default createGlobalStyle`
 
   .time{
     color: ${({ theme }) => theme.main};
+  }
+
+/***** FilePreview colors*****/
+  .filePreview .container{
+    background-color: ${({ theme }) => theme.lightenMain};
+
+  .filePreview > .header {
+      background-color: ${({ theme }) => theme.main};
+      border:1px solid red;
+  }
+
+  .filePreview > button {
+      background-color: transparent;
+  }
+
+  .filePreview > .preview {
+  }
+
+  .filePreview > .footer {
+      background-color: ${({ theme }) => theme.linkActive};
+      border:1px solid blue;
   }
   
   `;

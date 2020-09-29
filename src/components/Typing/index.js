@@ -1,5 +1,3 @@
 import Typing from './Typing';
 
-export {
-    Typing
-}
+export default Typing;

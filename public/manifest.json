@@ -1,6 +1,6 @@
 {
-  "short_name": "Chat App",
-  "name": "Chat App with React",
+  "short_name": "Chattie",
+  "name": "Chattie with React",
   "icons": [
     {
       "src": "favicon.ico",

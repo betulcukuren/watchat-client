@@ -1,18 +1,21 @@
 import React, { memo } from 'react';
 import './Input.css';
 import { RiSendPlane2Fill } from 'react-icons/ri';
-// import {GrEmoji} from 'react-icons/gr';
 import { MdAttachFile, MdKeyboardVoice } from 'react-icons/md';
 
-const Input = ({ setMessage, sendMessage, message }) => (
+const Input = ({
+  setMessage,
+  sendMessage,
+  message,
+  file, setPreview,
+}) => (
   <form className="form">
     <div className="icon group">
-      {/* <button className="emoji button" style={{color: '#caccca'}}><GrEmoji/></button> */}
       <div className="file button" style={{ color: '#caccca' }}>
         <label htmlFor="fileInput" className="fileLabel">
           <MdAttachFile />
         </label>
-        <input type="file" id="fileInput" />
+        <input type="file" id="fileInput" value={file} onChange={setPreview} />
       </div>
     </div>
     <input

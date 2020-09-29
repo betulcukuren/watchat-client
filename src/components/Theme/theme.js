@@ -23,6 +23,8 @@ export const lightTheme = {
   systemMsgBg: '#ececec',
   systemMsg: '#3B403A',
   settingsBtn: '#4a4d4a',
+  buttonColor: '#4a4d4a', /* 3e978b */
+
 };
 
 export const darkTheme = {
@@ -49,6 +51,6 @@ export const darkTheme = {
   toggleBg: '#181725',
   itemBg: '#1a1828',
   systemMsgBg: '#181725',
-  systemMsg: '#e38240',
+  systemMsg: '#7f5d73',
   settingsBtn: '#86878b',
 };

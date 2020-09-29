@@ -1,5 +1,3 @@
 import Toggles from './Toggles';
 
-export {
-    Toggles
-}
+export default Toggles;

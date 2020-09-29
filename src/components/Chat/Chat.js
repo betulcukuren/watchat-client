@@ -1,27 +1,31 @@
 import React, {
   useState, useEffect, useCallback, useRef,
 } from 'react';
-import queryString from 'query-string';
 import io from 'socket.io-client';
+import { useParams } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '../Theme/theme';
 import GlobalStyles from '../Theme/global';
 
-import { Details } from '../Details';
+import Details from '../Details';
 import Messages from '../Messages';
 import Input from '../Input';
-import { Menu } from '../Menu';
-import { Typing } from '../Typing';
-import { Toggles } from '../Toggles';
-import { WindowFocusHandler } from '../WindowFocusHandler';
+import Menu from '../Menu';
+import Typing from '../Typing';
+import Toggles from '../Toggles';
+import WindowFocusHandler from '../WindowFocusHandler';
+import FilePreview from '../FilePreview';
 
 import './Chat.css';
 
-const Chat = ({ location }) => {
-  const [name, setName] = useState('');
-  const [room, setRoom] = useState('');
+const Chat = ({ name }) => {
+  const files = [];
+  const { room } = useParams();
+
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
+  const [file, setFile] = useState([]);
+  const [uploadFlag, setUploadFlag] = useState(false);
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([]);
   const [theme, setTheme] = useState('light');
@@ -31,17 +35,12 @@ const Chat = ({ location }) => {
   const socket = useRef(io(ENDPOINT));
 
   useEffect(() => {
-    const { name: username, room: userRoom } = queryString.parse(location.search);
-
-    setRoom(userRoom);
-    setName(username);
-
-    socket.current.emit('join', { name: username, room: userRoom }, (error) => {
+    socket.current.emit('join', { name, room }, (error) => {
       if (error) {
         console.log(error);
       }
     });
-  }, [socket, ENDPOINT, location.search]);
+  }, [socket, ENDPOINT, name, room]);
 
   useEffect(() => {
     socket.current.on('message', (msg) => {
@@ -96,6 +95,12 @@ const Chat = ({ location }) => {
     }
   }, [notification, setNotification]);
 
+  const setPreview = useCallback((e) => {
+    setUploadFlag(true);
+    setFile(e.target.files[0]);
+    console.log(e.target.files[0]);
+  }, [setFile]);
+
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
@@ -109,16 +114,25 @@ const Chat = ({ location }) => {
             notification={notification}
           />
           <Menu />
-          <div className="container">
-            <Messages messages={messages} name={name} />
-            <Typing users={users} name={name} />
-            <Input
-              message={message}
-              setMessage={onMessage}
-              sendMessage={sendMessage}
-            />
-          </div>
-          <Details users={users} room={room} />
+          {
+            uploadFlag
+              ? (<FilePreview file={file} />)
+              : (
+                <div className="container">
+                  <Messages messages={messages} name={name} />
+                  <Typing users={users} name={name} />
+                  <Input
+                    message={message}
+                    setMessage={onMessage}
+                    sendMessage={sendMessage}
+                    setPreview={setPreview}
+                  />
+                </div>
+              )
+            }
+          {uploadFlag
+            ? <Details users={users} room={room} file={file} />
+            : <Details users={users} room={room} />}
         </div>
       </>
     </ThemeProvider>

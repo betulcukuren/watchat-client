@@ -1,5 +1,3 @@
 import WindowFocusHandler from './WindowFocusHandler';
 
-export {
-    WindowFocusHandler
-}
+export default WindowFocusHandler;

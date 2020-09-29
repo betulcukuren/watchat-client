@@ -1,4 +1,4 @@
-.outerContainer {
+  .outerContainer {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -18,7 +18,12 @@
     .outerContainer {
       height: 100%;
     }  
+
     .container {
       width: 100vw;
+    }
+    
+    .toggles{
+      display:none;
     }
   }

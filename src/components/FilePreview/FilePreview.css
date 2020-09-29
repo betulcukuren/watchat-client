@@ -1,0 +1,33 @@
+.filePreview.container{
+    width:100%;
+    height:100%;
+    background-color: #ccc;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.filePreview > .header {
+    width:100%;
+    height:10vh;
+    margin:0;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filePreview > .header > button {
+    border:none;
+    font-size:1.5em;
+}
+
+.filePreview > .preview > img{
+    height: 65vh;
+    width: auto;
+}
+
+.filePreview > .footer {
+    width:100%;
+    height:20vh;
+}

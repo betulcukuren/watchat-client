@@ -1,9 +1,9 @@
 
   .toggles{
     position:absolute;
-    top:.5em;
+    top:0em;
     width: 4em;
-    height: 6em;
+    height: 5em;
     display:flex;
     align-items:center;
     justify-content: center;

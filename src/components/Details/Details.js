@@ -1,5 +1,5 @@
 import React from 'react';
-import { AiOutlineUserAdd } from 'react-icons/ai';
+// import { AiOutlineUserAdd } from 'react-icons/ai';
 // import { MdModeEdit } from 'react-icons/md';
 import './Details.css';
 
@@ -7,16 +7,16 @@ const Details = ({ users, room, file }) => (
   <div className="detail">
     <div className="header">
       <p className="title">{room}</p>
-      <button className="invite" type="button">
+      {/* <button className="invite" type="button">
         <AiOutlineUserAdd className="icon" />
         <span> Invite </span>
-      </button>
+      </button> */}
+      <p className="count">
+        {users.length}
+        {' '}
+        people joined
+      </p>
     </div>
-    <p className="count">
-      {users.length}
-      {' '}
-      people joined
-    </p>
     {
         users
           ? (

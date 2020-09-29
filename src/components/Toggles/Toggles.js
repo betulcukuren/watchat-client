@@ -4,7 +4,7 @@ import { MdNotificationsNone, MdNotificationsOff } from 'react-icons/md';
 import './Toggles.css';
 
 const Toggles = ({
-  toggleTheme, theme, notification, toggleNotification,
+  toggleTheme, theme, soundChoice, toggleNotification,
 }) => (
   <div className="toggles">
     <button type="button" className="toggle" onClick={toggleTheme}>
@@ -16,7 +16,7 @@ const Toggles = ({
     </button>
     <button type="button" className="toggle" onClick={toggleNotification}>
       {
-                notification === true
+                soundChoice === true
                   ? (<MdNotificationsNone />)
                   : (<MdNotificationsOff />)
             }

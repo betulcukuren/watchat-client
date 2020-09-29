@@ -4,8 +4,11 @@ import React, {
 import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import UIfx from 'uifx';
 import { lightTheme, darkTheme } from '../Theme/theme';
 import GlobalStyles from '../Theme/global';
+
+import audio from '../../audio/notification.mp3';
 
 import Details from '../Details';
 import Messages from '../Messages';
@@ -22,12 +25,13 @@ const Chat = ({ name }) => {
   const { room } = useParams();
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
-  const [file, setFile] = useState([]);
-  const [uploadFlag, setUploadFlag] = useState(false);
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([]);
   const [theme, setTheme] = useState('light');
-  const [notification, setNotification] = useState(true);
+  const [windowBlur, setWindowState] = useState(false);
+  const [soundChoice, setSoundChoice] = useState(true);
+  const [file, setFile] = useState([]);
+  const [uploadFlag, setUploadFlag] = useState(false);
 
   const ENDPOINT = process.env.REACT_APP_ENDPOINT;
   const socket = useRef(io(ENDPOINT));
@@ -54,10 +58,12 @@ const Chat = ({ name }) => {
     });
   }, []);
 
+  /* Typing Hook */
   useEffect(() => {
     socket.current.emit('typing', typing);
   }, [typing, socket]);
 
+  /* Typing & Send Message */
   const sendMessage = useCallback((event) => {
     event.preventDefault();
 
@@ -77,6 +83,7 @@ const Chat = ({ name }) => {
     }
   }, [setTyping, typing]);
 
+  /* Theme Settings */
   const toggleTheme = useCallback(() => {
     if (theme === 'light') {
       setTheme('dark');
@@ -85,14 +92,34 @@ const Chat = ({ name }) => {
     }
   }, [theme, setTheme]);
 
-  const toggleNotification = useCallback(() => {
-    if (notification === true) {
-      setNotification(false);
-    } else {
-      setNotification(true);
-    }
-  }, [notification, setNotification]);
+  /* Notification Sound */
+  const soundNotification = new UIfx(
+    audio,
+    {
+      volume: 0.4, // number between 0.0 ~ 1.0
+      throttleMs: 100,
+    },
+  );
 
+  const playNotificationSound = useCallback(() => {
+    if (windowBlur && soundChoice) {
+      soundNotification.play();
+    }
+  }, [soundNotification, windowBlur, soundChoice]);
+
+  const toggleNotification = useCallback(() => {
+    if (soundChoice === true) {
+      setSoundChoice(false);
+    } else {
+      setSoundChoice(true);
+    }
+  }, [soundChoice, setSoundChoice]);
+
+  useEffect(() => {
+    playNotificationSound();
+  }, [messages]);
+
+  /* File Preview */
   const setPreview = useCallback((e) => {
     setUploadFlag(true);
     setFile(e.target.files[0]);
@@ -103,12 +130,12 @@ const Chat = ({ name }) => {
       <>
         <GlobalStyles />
         <div className="outerContainer">
-          {notification && <WindowFocusHandler setNotification={setNotification} />}
+          {soundChoice && <WindowFocusHandler setWindowState={setWindowState} />}
           <Toggles
             toggleTheme={toggleTheme}
             theme={theme}
             toggleNotification={toggleNotification}
-            notification={notification}
+            soundChoice={soundChoice}
           />
           <Menu />
           {

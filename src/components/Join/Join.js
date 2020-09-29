@@ -16,7 +16,7 @@ const SignIn = ({ history, setName }) => {
   return (
     <div className="joinOuterContainer">
       <div className="joinInnerContainer">
-        <h1 className="heading">join the room</h1>
+        <h1 className="heading">chattie</h1>
         <div>
           <input
             placeholder="username"
@@ -26,7 +26,7 @@ const SignIn = ({ history, setName }) => {
             onChange={(event) => setName(event.target.value)}
           />
         </div>
-        <button type="button" className="joinButton mt-20" onClick={join}>join</button>
+        <button type="button" className="joinButton mt-20" onClick={join}>create room</button>
       </div>
     </div>
   );

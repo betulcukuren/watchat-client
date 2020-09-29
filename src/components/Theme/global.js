@@ -100,7 +100,7 @@ export default createGlobalStyle`
 
   .detail > .header{
     color: ${({ theme }) => theme.text};
-    border-bottom:.1em solid  ${({ theme }) => theme.lightenMain};
+    // border-bottom:.1em solid  ${({ theme }) => theme.lightenMain};
   }
 
   .edit {
@@ -114,6 +114,10 @@ export default createGlobalStyle`
   .invite{
     background-color: transparent;
     color: ${({ theme }) => theme.text}
+  }
+
+  .users{
+    border-top:.1em solid  ${({ theme }) => theme.lightenMain};
   }
 
   .users > .item {

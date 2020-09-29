@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 
-// User has switched back to the tab
-const onFocus = () => {
-  console.log('Tab is in focus');
-};
+const WindowFocusHandler = ({ setWindowState }) => {
+  // User has switched back to the tab
+  const onFocus = () => {
+    setWindowState(false);
+  };
 
-// User has switched away from the tab (AKA tab is hidden)
-const onBlur = () => {
-  console.log('Tab is blurred');
-};
+  // User has switched away from the tab (AKA tab is hidden)
+  const onBlur = () => {
+    setWindowState(true);
+  };
 
-const WindowFocusHandler = () => {
   useEffect(() => {
     window.addEventListener('focus', onFocus);
     window.addEventListener('blur', onBlur);

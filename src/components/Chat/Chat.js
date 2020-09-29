@@ -19,7 +19,6 @@ import FilePreview from '../FilePreview';
 import './Chat.css';
 
 const Chat = ({ name }) => {
-  const files = [];
   const { room } = useParams();
 
   const [users, setUsers] = useState([]);

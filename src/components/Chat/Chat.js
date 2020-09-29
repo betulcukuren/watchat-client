@@ -20,7 +20,6 @@ import './Chat.css';
 
 const Chat = ({ name }) => {
   const { room } = useParams();
-
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
   const [file, setFile] = useState([]);
@@ -97,7 +96,6 @@ const Chat = ({ name }) => {
   const setPreview = useCallback((e) => {
     setUploadFlag(true);
     setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
   }, [setFile]);
 
   return (

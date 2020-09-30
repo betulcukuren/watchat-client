@@ -11,7 +11,7 @@ export const lightTheme = {
   messageShadow: '#ddd',
   shadow: '#ddd',
   inputBg: '#fff',
-  formBg: 'f1f1f1',
+  formBg: '#f1f1f1',
   otherMessage: '#000',
   otherMessageBg: '#fff',
   userMessageBg: '#4a4d4a',

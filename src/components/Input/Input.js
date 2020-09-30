@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import './Input.css';
-import { RiSendPlane2Fill } from 'react-icons/ri';
+import { MdSend } from 'react-icons/md';
 import { MdAttachFile, MdKeyboardVoice } from 'react-icons/md';
 
 const Input = ({
@@ -27,7 +27,7 @@ const Input = ({
       onKeyPress={(event) => (event.key === 'Enter' ? sendMessage(event) : '')}
     />
     <button type="button" className="voice button" style={{ color: '#caccca' }}><MdKeyboardVoice /></button>
-    <button type="button" className="send button" onClick={(e) => sendMessage(e)} style={{ color: '#caccca' }}><RiSendPlane2Fill /></button>
+    <button type="button" className="send button" onClick={(e) => sendMessage(e)} style={{ color: '#caccca' }}><MdSend /></button>
   </form>
 );
 

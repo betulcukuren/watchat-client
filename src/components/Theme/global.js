@@ -153,7 +153,7 @@ export default createGlobalStyle`
    
   /***** input colors ******/
   .form {
-    background: ${({ theme }) => theme.formBg};
+    // background: ${({ theme }) => theme.formBg};
     // border:1px solid ${({ theme }) => theme.bg};
   }
 
@@ -215,25 +215,5 @@ export default createGlobalStyle`
     color: ${({ theme }) => theme.main};
   }
 
-/***** FilePreview colors*****/
-  .filePreview .container{
-    background-color: ${({ theme }) => theme.lightenMain};
-
-  .filePreview > .header {
-      background-color: ${({ theme }) => theme.main};
-      border:1px solid red;
-  }
-
-  .filePreview > button {
-      background-color: transparent;
-  }
-
-  .filePreview > .preview {
-  }
-
-  .filePreview > .footer {
-      background-color: ${({ theme }) => theme.linkActive};
-      border:1px solid blue;
-  }
-  
+/
   `;

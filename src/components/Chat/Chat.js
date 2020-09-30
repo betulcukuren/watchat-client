@@ -13,7 +13,6 @@ import Input from '../Input';
 import Menu from '../Menu';
 import Typing from '../Typing';
 import Toggles from '../Toggles';
-import WindowFocusHandler from '../WindowFocusHandler';
 import FilePreview from '../FilePreview';
 
 import './Chat.css';
@@ -25,9 +24,7 @@ const Chat = ({ name }) => {
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([]);
   const [theme, setTheme] = useState('light');
-  const [windowBlur, setWindowState] = useState(false);
   const [soundChoice, setSoundChoice] = useState(true);
-  const [newMessageFlag, setNewMessageFlag] = useState(false);
 
   const [file, setFile] = useState([]);
   const [uploadFlag, setUploadFlag] = useState(false);
@@ -72,6 +69,14 @@ const Chat = ({ name }) => {
     }
   }, [setMessage, message, setTyping]);
 
+  /* Send File Message */
+  const sendFile = useCallback((event) => {
+    event.preventDefault();
+    if (file) {
+      socket.current.emit('sendFile', file, () => setFile([]));
+    }
+  }, [file, setFile]);
+
   const onMessage = useCallback((e) => {
     const { currentTarget: { value } } = e;
     setMessage(value);
@@ -101,15 +106,10 @@ const Chat = ({ name }) => {
   }, [soundChoice, setSoundChoice]);
 
   useEffect(() => {
-      setNewMessageFlag(true);
-  }, [messages]);
-
-  useEffect(() => {
-    if (windowBlur && soundChoice && newMessageFlag) {
+    if (document.visibilityState !== 'visible' && soundChoice) {
       document.querySelector('audio').play();
-      setNewMessageFlag(false);
     }
-  }, [windowBlur, soundChoice, newMessageFlag]);
+  }, [messages, soundChoice]);
 
   /* File Preview */
   const setPreview = useCallback((e) => {
@@ -120,12 +120,11 @@ const Chat = ({ name }) => {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
-        <audio controls>
-          <source src="/audio/notification.mp3" type="audio/mpeg" />
+        <audio controls track="/audio/light.mp3" caption="audio">
+          <source src="/audio/light.mp3" type="audio/mpeg" />
         </audio>
         <GlobalStyles />
         <div className="outerContainer">
-          {soundChoice && <WindowFocusHandler setWindowState={setWindowState} />}
           <Toggles
             toggleTheme={toggleTheme}
             theme={theme}
@@ -135,7 +134,7 @@ const Chat = ({ name }) => {
           <Menu />
           {
             uploadFlag
-              ? (<FilePreview file={file} />)
+              ? (<FilePreview file={file} sendFile={sendFile} />)
               : (
                 <div className="container">
                   <Messages messages={messages} name={name} />

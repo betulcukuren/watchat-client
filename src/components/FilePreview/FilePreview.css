@@ -1,25 +1,40 @@
 .filePreview.container{
     width:100%;
     height:100%;
-    background-color: #ccc;
+    background-color: #d8d8dd;
     display:flex;
     flex-direction: column;
     align-items:center;
     justify-content: space-between;
+    border:none;
+    margin:0;
+    padding:0;
 }
 
 .filePreview > .header {
     width:100%;
-    height:10vh;
+    height:8vh;
     margin:0;
     display:flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    background-color: #7f5d73;
+    color: #f1f1f1;
+    padding:2vw;
+    font-size:1.1em;
+    letter-spacing: .05em;
 }
 
 .filePreview > .header > button {
     border:none;
-    font-size:1.5em;
+    font-size:1.4em;
+    background-color: transparent;
+    padding-top:1.3vh;
+    margin-right:2vw;
+}
+
+.header > button > .icon {
+    fill: #f1f1f1;
 }
 
 .filePreview > .preview > img{
@@ -30,4 +45,74 @@
 .filePreview > .footer {
     width:100%;
     height:20vh;
+    background-color: #cbcad1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.footer > button {
+    width:4.5em;
+    height:4.5em;
+    border:none;
+    border-radius:50%;
+    position:absolute;
+    right:20vw;
+    bottom:15vh;
+    background-color: #7f5d73;
+}
+
+.footer > .preview-thumbs{
+    max-width: 60%;
+    max-height: 80%;
+}
+
+.footer > button > .icon {
+    font-size:1.5em;
+    fill: #f1f1f1;
+}
+
+.previewThumbs {
+    width:6em;
+    height:6em;
+    margin:0;
+    padding:0;
+}
+
+.previewThumbs > .item {
+    width:6em;
+    height:6em;
+    background-color: #efeef5;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.previewThumbs > .item > .thumb {
+    width:5.5em;
+    height:5.5em;  
+}
+
+.addFile {
+    width:6em;
+    height:6em;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:1em;
+    margin:.5em;
+    background-color: #efeef5;
+    font-size:1em;
+}
+
+.addFile > button {
+    border:none;
+    background-color: transparent;
+    color: #7f5d73;
+    text-transform: uppercase;
+}
+
+.addFile > button > .icon {
+    font-size:2em;
+    fill: #7f5d73;
 }

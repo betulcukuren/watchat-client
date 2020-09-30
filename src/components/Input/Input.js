@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import './Input.css';
-import { MdSend } from 'react-icons/md';
-import { MdAttachFile, MdKeyboardVoice } from 'react-icons/md';
+import { MdSend, MdAttachFile, MdKeyboardVoice } from 'react-icons/md';
 
 const Input = ({
   setMessage,

@@ -42,7 +42,13 @@ const Chat = ({ name }) => {
 
   useEffect(() => {
     socket.current.on('message', (msg) => {
-      setMessages((msgs) => [...msgs, msg]);
+      if (msg.image) {
+        const img = new Image();
+        img.src = `data:image/jpg;base64,${msg.image}`;
+        setMessages((msgs) => [...msgs, img]);
+      } else {
+        setMessages((msgs) => [...msgs, msg]);
+      }
     });
 
     socket.current.on('roomData', ({ users: userList }) => {
@@ -69,13 +75,19 @@ const Chat = ({ name }) => {
     }
   }, [setMessage, message, setTyping]);
 
-  /* Send File Message */
-  const sendFile = useCallback((event) => {
-    event.preventDefault();
+  /* Send Image Message */
+  const sendImage = useCallback(() => {
     if (file) {
-      socket.current.emit('sendFile', file, () => setFile([]));
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result;
+        console.log(base64);
+        socket.current.emit('sendMessage', base64, () => setFile([]));
+      };
+      setUploadFlag(false);
+      reader.readAsDataURL(file);
     }
-  }, [file, setFile]);
+  }, [file, setUploadFlag]);
 
   const onMessage = useCallback((e) => {
     const { currentTarget: { value } } = e;
@@ -115,7 +127,7 @@ const Chat = ({ name }) => {
   const setPreview = useCallback((e) => {
     setUploadFlag(true);
     setFile(e.target.files[0]);
-  }, [setFile]);
+  }, [setFile, setUploadFlag]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -134,7 +146,7 @@ const Chat = ({ name }) => {
           <Menu />
           {
             uploadFlag
-              ? (<FilePreview file={file} sendFile={sendFile} />)
+              ? (<FilePreview file={file} sendImage={sendImage} />)
               : (
                 <div className="container">
                   <Messages messages={messages} name={name} />

@@ -4,7 +4,7 @@ import { IoMdClose } from 'react-icons/io';
 import { MdSend } from 'react-icons/md';
 import { VscAdd } from 'react-icons/vsc';
 
-const FilePreview = ({ file, sendFile }) => (
+const FilePreview = ({ file, sendImage }) => (
   <div className="filePreview container">
     <div className="header">
       <button type="button"><IoMdClose className="icon" /></button>
@@ -17,7 +17,10 @@ const FilePreview = ({ file, sendFile }) => (
       />
     </div>
     <div className="footer">
-      <button type="button">
+      <button
+        type="button"
+        onClick={(e) => sendImage(e)}
+      >
         {' '}
         <MdSend className="icon" />
         {' '}
@@ -38,7 +41,6 @@ const FilePreview = ({ file, sendFile }) => (
       <div className="addFile">
         <button
           type="button"
-          onClick={(e) => sendFile(e)}
         >
           <VscAdd className="icon" />
           {' '}

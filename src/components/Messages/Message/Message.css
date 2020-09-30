@@ -18,6 +18,8 @@
   
   .messageText img {
     vertical-align: middle;
+    width:10em;
+    max-width:100%;
   }
   
   .messageContainer {

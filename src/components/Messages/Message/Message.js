@@ -12,6 +12,7 @@ const Message = ({ message: { text, user, color }, name }) => {
     isSentByCurrentUser = true;
   }
 
+  const messageText = text.indexOf('base64,') > -1 ? (<img src={text} alt="" />) : (ReactEmoji.emojify(text));
   return (
     // eslint-disable-next-line no-nested-ternary
     isSentByCurrentUser
@@ -23,7 +24,7 @@ const Message = ({ message: { text, user, color }, name }) => {
               borderBottomRightRadius: '0px',
             }}
           >
-            <p className="messageText">{ReactEmoji.emojify(text)}</p>
+            <p className="messageText">{messageText}</p>
             {/* <p className="time">18:36</p> */}
           </div>
         </div>
@@ -41,7 +42,7 @@ const Message = ({ message: { text, user, color }, name }) => {
                   }}
                 >
                   {' '}
-                  {ReactEmoji.emojify(text)}
+                  {messageText}
                 </p>
                 {/* <p className="time">18:36</p> */}
 
@@ -65,7 +66,7 @@ const Message = ({ message: { text, user, color }, name }) => {
                   {' '}
                   {user}
                 </p>
-                <p className="messageText">{ReactEmoji.emojify(text)}</p>
+                <p className="messageText">{messageText}</p>
                 {/* <p className="time">18:36</p> */}
               </div>
             </div>

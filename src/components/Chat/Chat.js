@@ -4,11 +4,8 @@ import React, {
 import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import UIfx from 'uifx';
 import { lightTheme, darkTheme } from '../Theme/theme';
 import GlobalStyles from '../Theme/global';
-
-import audio from '../../audio/notification.mp3';
 
 import Details from '../Details';
 import Messages from '../Messages';
@@ -30,6 +27,8 @@ const Chat = ({ name }) => {
   const [theme, setTheme] = useState('light');
   const [windowBlur, setWindowState] = useState(false);
   const [soundChoice, setSoundChoice] = useState(true);
+  const [newMessageFlag, setNewMessageFlag] = useState(false);
+
   const [file, setFile] = useState([]);
   const [uploadFlag, setUploadFlag] = useState(false);
 
@@ -92,21 +91,7 @@ const Chat = ({ name }) => {
     }
   }, [theme, setTheme]);
 
-  /* Notification Sound */
-  const soundNotification = new UIfx(
-    audio,
-    {
-      volume: 0.4, // number between 0.0 ~ 1.0
-      throttleMs: 100,
-    },
-  );
-
-  const playNotificationSound = useCallback(() => {
-    if (windowBlur && soundChoice) {
-      soundNotification.play();
-    }
-  }, [soundNotification, windowBlur, soundChoice]);
-
+  /* Notification */
   const toggleNotification = useCallback(() => {
     if (soundChoice === true) {
       setSoundChoice(false);
@@ -116,8 +101,15 @@ const Chat = ({ name }) => {
   }, [soundChoice, setSoundChoice]);
 
   useEffect(() => {
-    playNotificationSound();
+      setNewMessageFlag(true);
   }, [messages]);
+
+  useEffect(() => {
+    if (windowBlur && soundChoice && newMessageFlag) {
+      document.querySelector('audio').play();
+      setNewMessageFlag(false);
+    }
+  }, [windowBlur, soundChoice, newMessageFlag]);
 
   /* File Preview */
   const setPreview = useCallback((e) => {
@@ -128,6 +120,9 @@ const Chat = ({ name }) => {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
+        <audio controls>
+          <source src="/audio/notification.mp3" type="audio/mpeg" />
+        </audio>
         <GlobalStyles />
         <div className="outerContainer">
           {soundChoice && <WindowFocusHandler setWindowState={setWindowState} />}

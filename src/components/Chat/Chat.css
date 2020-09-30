@@ -14,6 +14,10 @@
     width: 77vw;
   }
 
+  audio {
+    display:none;
+  }
+
   @media (min-width: 320px) and (max-width: 1200px) {
     .outerContainer {
       height: 100%;

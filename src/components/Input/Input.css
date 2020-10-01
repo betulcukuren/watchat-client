@@ -49,6 +49,7 @@
     margin:0;
     padding:.2em;
     border-radius: 1em;
+    cursor:pointer;
     /* border:1px solid red; */
   }
 
@@ -63,6 +64,7 @@
   @media (min-width: 480px) and (max-width: 1200px) {
     .form{
       font-size:16px;
+      margin-bottom: 5vh;
     }
 
     .button {
@@ -73,9 +75,7 @@
     .input{
       width:60vw;
       height:6vh;
+      margin:1vh;
     }
 
-    .form{
-      margin-bottom: 5vh;
-    }
   }

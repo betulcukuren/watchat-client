@@ -128,28 +128,6 @@ export default createGlobalStyle`
   .username {
     color: ${({ theme }) => theme.text};
   }
-
-  .attachments{
-    border:1px solid  ${({ theme }) => theme.lightenMain};
-  }
-  
-  .sections > button {
-    background: transparent;
-    border-bottom:1px solid  ${({ theme }) => theme.aux};
-    color:  ${({ theme }) => theme.main};
-  }
-
-  .sections > button:hover, button:active{
-    background-color:  ${({ theme }) => theme.linkActiveBg};
-    color: ${({ theme }) => theme.linkActive};
-  }
-
-  .sections > button:focus{
-    background-color:  ${({ theme }) => theme.linkActiveBg};
-    border-bottom:1px solid  ${({ theme }) => theme.linkActive};
-    color: ${({ theme }) => theme.linkActive};
-  }
-
    
   /***** input colors ******/
   .form {

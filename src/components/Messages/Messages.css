@@ -1,5 +1,5 @@
 .messages {
-    padding: 2.5em 4em;
+    padding: 1vh 3vh;
     overflow-y: auto;
     flex: auto;
     height: 86vh;
@@ -15,6 +15,3 @@
   scrollbar-width: none;  /* Firefox */
 }
 
-.css-1qyrjaz, [data-css-1qyrjaz]{
-  content: "A" !important; 
-}

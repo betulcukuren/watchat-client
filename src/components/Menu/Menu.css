@@ -45,6 +45,10 @@
   margin-top:.3em;
 }
 
+.tool{
+  border:none;
+}
+
 .tool > .icon{
   font-size:1.8em;
   margin-top:.1em;

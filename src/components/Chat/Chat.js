@@ -4,9 +4,9 @@ import React, {
 import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+
 import { lightTheme, darkTheme } from '../Theme/theme';
 import GlobalStyles from '../Theme/global';
-
 import Details from '../Details';
 import Messages from '../Messages';
 import Input from '../Input';
@@ -14,6 +14,7 @@ import Menu from '../Menu';
 import Typing from '../Typing';
 import Toggles from '../Toggles';
 import FilePreview from '../FilePreview';
+import VideoPlayer from '../VideoPlayer';
 
 import './Chat.css';
 
@@ -25,6 +26,8 @@ const Chat = ({ name }) => {
   const [messages, setMessages] = useState([]);
   const [theme, setTheme] = useState('light');
   const [soundChoice, setSoundChoice] = useState(true);
+  const [url, setUrl] = useState('https://www.youtube.com/watch?v=OBQmCuA1tdU&list=RDNJBYaohGA2g&index=3');
+  const [openMenu, setOpenMenu] = useState(false);
 
   const [file, setFile] = useState([]);
   const [uploadFlag, setUploadFlag] = useState(false);
@@ -70,7 +73,12 @@ const Chat = ({ name }) => {
     event.preventDefault();
 
     if (message) {
-      socket.current.emit('sendMessage', message, () => setMessage(''));
+      if (message.indexOf('http') > -1) {
+        setUrl(message);
+        setMessage('');
+      } else {
+        socket.current.emit('sendMessage', message, () => setMessage(''));
+      }
       setTyping(false);
     }
   }, [setMessage, message, setTyping]);
@@ -81,7 +89,6 @@ const Chat = ({ name }) => {
       const reader = new FileReader();
       reader.onload = () => {
         const base64 = reader.result;
-        console.log(base64);
         socket.current.emit('sendMessage', base64, () => setFile([]));
       };
       setUploadFlag(false);
@@ -143,26 +150,26 @@ const Chat = ({ name }) => {
             toggleNotification={toggleNotification}
             soundChoice={soundChoice}
           />
-          <Menu />
+          <Menu setOpenMenu={setOpenMenu} />
           {
-            uploadFlag
-              ? (<FilePreview file={file} sendImage={sendImage} />)
-              : (
-                <div className="container">
-                  <Messages messages={messages} name={name} />
-                  <Typing users={users} name={name} />
-                  <Input
-                    message={message}
-                    setMessage={onMessage}
-                    sendMessage={sendMessage}
-                    setPreview={setPreview}
-                  />
-                </div>
-              )
-            }
-          {uploadFlag
-            ? <Details users={users} room={room} file={file} />
-            : <Details users={users} room={room} />}
+                    uploadFlag && (<FilePreview file={file} sendImage={sendImage} />)
+          }
+          <div className="container">
+            {
+                    openMenu && (
+                      <VideoPlayer className="player" url={url} config={{ controls: true }} />
+                    )
+                  }
+            <Messages messages={messages} name={name} />
+            <Typing users={users} name={name} />
+            <Input
+              message={message}
+              setMessage={onMessage}
+              sendMessage={sendMessage}
+              setPreview={setPreview}
+            />
+          </div>
+          <Details users={users} room={room} />
         </div>
       </>
     </ThemeProvider>

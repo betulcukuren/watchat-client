@@ -18,7 +18,6 @@
   
   .messageText img {
     vertical-align: middle;
-    width:10em;
     max-width:100%;
   }
   
@@ -28,7 +27,6 @@
     padding: 0 2%;
     margin-top: .2em;
   }
-
 
   .sentText {
     display: flex;
@@ -61,4 +59,8 @@
     left:0;
     margin: .5em auto;
     border-radius: '0px';
+ }
+
+ .imageMessage{
+   width:25em;
  }

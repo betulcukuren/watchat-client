@@ -7,7 +7,12 @@ import { VscAdd } from 'react-icons/vsc';
 const FilePreview = ({ file, sendImage }) => (
   <div className="filePreview container">
     <div className="header">
-      <button type="button"><IoMdClose className="icon" /></button>
+      <button
+        type="button"
+        onClick={sendImage}
+      >
+        <IoMdClose className="icon" />
+      </button>
       <span>Preview</span>
     </div>
     <div className="preview">
@@ -19,7 +24,7 @@ const FilePreview = ({ file, sendImage }) => (
     <div className="footer">
       <button
         type="button"
-        onClick={(e) => sendImage(e)}
+        onClick={sendImage}
       >
         {' '}
         <MdSend className="icon" />

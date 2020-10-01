@@ -12,7 +12,7 @@ const Message = ({ message: { text, user, color }, name }) => {
     isSentByCurrentUser = true;
   }
 
-  const messageText = text.indexOf('base64,') > -1 ? (<img src={text} alt="" />) : (ReactEmoji.emojify(text));
+  const messageText = text.indexOf('base64,') > -1 ? (<img className="imageMessage" src={text} alt="" />) : (ReactEmoji.emojify(text));
   return (
     // eslint-disable-next-line no-nested-ternary
     isSentByCurrentUser

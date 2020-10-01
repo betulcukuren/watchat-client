@@ -54,6 +54,10 @@ const Chat = ({ name }) => {
       }
     });
 
+    socket.current.on('url', ({ url: videoUrl }) => {
+      setUrl(videoUrl);
+    });
+
     socket.current.on('roomData', ({ users: userList }) => {
       setUsers(userList);
     });
@@ -74,8 +78,7 @@ const Chat = ({ name }) => {
 
     if (message) {
       if (message.indexOf('http') > -1) {
-        setUrl(message);
-        setMessage('');
+        socket.current.emit('videoUrl', message, () => setMessage(''));
       } else {
         socket.current.emit('sendMessage', message, () => setMessage(''));
       }

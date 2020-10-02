@@ -8,6 +8,8 @@
 .player{
   left:0;
   right:0;
+  top:0;
+  bottom:0;
   margin:auto;
   width:50% !important;
   height:15em !important;
@@ -51,3 +53,23 @@
     border:none;
   }
   
+  .fullscreen.button {
+    padding:0;
+    font-size:1.5em;
+    margin-left:74vw;
+    margin-top:-5vh;
+    border-radius:0;
+    position:absolute;
+  }
+
+  .fullscreen.icon {
+    stroke: #fff !important;
+    fill: #fff !important;
+  }
+
+@media (min-width: 320px) and (max-width: 1200px) {
+  .fullscreen.button {
+    margin-left:92vw;
+    margin-top:-7vh;
+  }
+}

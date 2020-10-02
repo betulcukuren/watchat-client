@@ -139,6 +139,7 @@ const Chat = ({ name }) => {
     setFile(e.target.files[0]);
   }, [setFile, setUploadFlag]);
 
+  /* FullScreen */
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>

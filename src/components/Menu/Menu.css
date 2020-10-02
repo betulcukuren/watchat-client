@@ -47,6 +47,7 @@
 
 .tool{
   border:none;
+  background-color:transparent;
 }
 
 .tool > .icon{

@@ -26,7 +26,7 @@ const Chat = ({ name }) => {
   const [messages, setMessages] = useState([]);
   const [theme, setTheme] = useState('light');
   const [soundChoice, setSoundChoice] = useState(true);
-  const [url, setUrl] = useState('https://www.youtube.com/watch?v=OBQmCuA1tdU&list=RDNJBYaohGA2g&index=3');
+  const [url, setUrl] = useState('https://www.youtube.com/watch?v=sX7fd8uQles');
   const [openMenu, setOpenMenu] = useState(false);
 
   const [file, setFile] = useState([]);

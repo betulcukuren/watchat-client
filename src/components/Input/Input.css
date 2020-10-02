@@ -28,9 +28,9 @@
     border-radius: 0;
     width: 55vw;
     height:6.5vh;
-    text-indent: 1.5em;
+    text-indent: .2em;
     margin:0;
-    padding:0;
+    padding:.8em;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em;
     border-bottom-left-radius: 2em;

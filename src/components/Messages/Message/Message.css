@@ -34,7 +34,7 @@
     font-family: 'Open Sans', sans-serif;
     font-size:11px;
     margin:0;
-    width:10vw;
+    width:100%;
     word-break: break-all;
     font-weight: 700;
   }
@@ -63,4 +63,11 @@
 
  .imageMessage{
    width:25em;
+ }
+
+ @media (min-width: 320px) and (max-width: 1200px)  {
+  .messageBox{
+    min-width: 30%;
+    max-width: 80%;
+  }
  }

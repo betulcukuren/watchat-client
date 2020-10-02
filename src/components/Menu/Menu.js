@@ -1,6 +1,5 @@
 import React from 'react';
-import { BsArrowReturnLeft } from 'react-icons/bs';
-import { MdTimer, MdOndemandVideo, MdPersonalVideo } from 'react-icons/md';
+import { MdTimer, MdOndemandVideo, MdPersonalVideo, MdExitToApp } from 'react-icons/md';
 
 import './Menu.css';
 
@@ -17,7 +16,7 @@ const Menu = ({ setOpenMenu }) => (
       </button>
       <a href="/" className="tool"><MdPersonalVideo className="icon" /></a>
     </div>
-    <a href="/" className="return"><BsArrowReturnLeft className="icon" /></a>
+    <a href="/" className="return"><MdExitToApp className="icon" /></a>
   </div>
 );
 

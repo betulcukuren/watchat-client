@@ -33,6 +33,11 @@
     align-items: center;
   }
 
+  .title > button {
+    border:none;
+    background-color: transparent;
+  }
+
   .users {
     display: flex;
     justify-content: flex-start;
@@ -59,29 +64,29 @@
     display: flex;
     align-items: center;
     justify-content:space-between;
-    padding: .8em;
+    padding:.1em .5em;
     left:0;
     right:0;
     margin: .1em auto;
-    width:80%;
+    width:85%;
     height:5vh;
   }
 
   .users > .item  > p {
     margin:0px;
-    margin-left:.8em;
-    font-size:12px;
+    font-size:11px;
     overflow:hidden;
   }
 
-  .users > .item  > .icon {
-    margin-right:.8em;
+  .users > .item > button {
+    border:none;
+    background-color: transparent;
   }
-  
-  .users img {
-    padding-left: .8em;
+
+  .users > .item > button > .icon {
+    fill: #888;
   }
-  
+
   .detail h1 {
     margin-bottom: 0px;
   }

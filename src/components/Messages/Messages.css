@@ -1,5 +1,5 @@
 .messages {
-    padding: 1vh 3vh;
+    padding: 1vh 12vh;
     overflow-y: auto;
     flex: auto;
     height: 86vh;
@@ -15,3 +15,9 @@
   scrollbar-width: none;  /* Firefox */
 }
 
+@media (min-width: 320px) and (max-width: 1200px)  {
+    .messages{
+      padding: 1vh 3vh;
+
+    }
+}

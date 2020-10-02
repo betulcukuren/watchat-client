@@ -1,10 +1,15 @@
 import React from 'react';
+import { FaEdit } from 'react-icons/fa';
 import './Details.css';
 
 const Details = ({ users, room }) => (
   <div className="detail">
     <div className="header">
-      <p className="title">{room}</p>
+      <p className="title">
+        {room}
+        {' '}
+        <button type="button"><FaEdit /></button>
+      </p>
       <p className="count">
         {users.length}
         {' '}
@@ -23,6 +28,7 @@ const Details = ({ users, room }) => (
                     {name}
                     {' '}
                   </p>
+                  <button type="button"><FaEdit className="icon" /></button>
                 </div>
               ))}
             </div>

@@ -19,7 +19,6 @@ import './Chat.css';
 const Chat = ({ name, setName }) => {
   const { room } = useParams();
 
-  // const [roomName, setRoomName] = useState(`${room}`);
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
   const [typing, setTyping] = useState(false);
@@ -66,15 +65,6 @@ const Chat = ({ name, setName }) => {
       setUsers(userList);
     });
   }, []);
-
-  // const changeRoomName = useCallback((newRoomName) => {
-  //   if (newRoomName) {
-  //     socket.current.emit('changeRoomName', newRoomName);
-  //     socket.current.on('newRoomName', ({ roomName: changedName }) => {
-  //       setRoomName(changedName);
-  //     });
-  //   }
-  // }, [setRoomName]);
 
   const changeUsername = useCallback((newUsername) => {
     if (newUsername) {

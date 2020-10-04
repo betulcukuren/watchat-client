@@ -1,5 +1,5 @@
 import React from 'react';
-// import { FaEdit } from 'react-icons/fa';
+import { FaEdit } from 'react-icons/fa';
 import { MdExitToApp } from 'react-icons/md';
 import { FiShare2 } from 'react-icons/fi';
 
@@ -7,14 +7,14 @@ import './Details.css';
 
 const Details = ({
   users, roomName, name, changeUsername,
-}) =>
-// const editUserName = () => {
-//   const element = document.getElementById('self');
-//   element.contentEditable = 'true';
-//   // changeUserName(element.innerHTML);
-// };
+}) => {
+  const editUserName = () => {
+    const element = document.getElementById('self');
+    element.contentEditable = 'true';
+    changeUsername(element.innerHTML);
+  };
 
-  (
+  return (
     <div className="detail">
       <div className="header">
         <div className="title">
@@ -49,7 +49,7 @@ const Details = ({
                           {username}
                           {' '}
                         </p>
-                        {/* <button type="button" onClick={editUserName}><FaEdit className="icon" /></button> */}
+                        <button type="button" onClick={editUserName}><FaEdit className="icon" /></button>
                       </div>
                     )
                     : (
@@ -71,4 +71,5 @@ const Details = ({
       <a href="/" className="return"><MdExitToApp className="icon" /></a>
     </div>
   );
+};
 export default Details;

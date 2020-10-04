@@ -77,7 +77,6 @@ const Chat = ({ name, setName }) => {
   // }, [setRoomName]);
 
   const changeUsername = useCallback((newUsername) => {
-    console.log(newUsername);
     if (newUsername) {
       socket.current.emit('changeUsername', newUsername);
       setName(newUsername);
@@ -187,7 +186,6 @@ const Chat = ({ name, setName }) => {
                       <VideoPlayer className="player" url={url} config={{ controls: true }} />
                     )
                   }
-            {/* <div className="slider"> slider </div> */}
             <Messages messages={messages} name={name} />
             <Typing users={users} name={name} />
             <Input

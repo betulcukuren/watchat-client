@@ -4,12 +4,14 @@ import { IoMdClose } from 'react-icons/io';
 import { MdSend } from 'react-icons/md';
 import { VscAdd } from 'react-icons/vsc';
 
-const FilePreview = ({ file, sendImage }) => (
+const FilePreview = ({
+  file, sendImage, setUploadFlag, uploadFlag,
+}) => (
   <div className="filePreview container">
     <div className="header">
       <button
         type="button"
-        onClick={sendImage}
+        onClick={() => setUploadFlag(!uploadFlag)}
       >
         <IoMdClose className="icon" />
       </button>

@@ -4,13 +4,11 @@ import React, {
 import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-
 import { lightTheme, darkTheme } from '../Theme/theme';
 import GlobalStyles from '../Theme/global';
 import Details from '../Details';
 import Messages from '../Messages';
 import Input from '../Input';
-import Menu from '../Menu';
 import Typing from '../Typing';
 import Toggles from '../Toggles';
 import FilePreview from '../FilePreview';
@@ -18,8 +16,10 @@ import VideoPlayer from '../VideoPlayer';
 
 import './Chat.css';
 
-const Chat = ({ name }) => {
+const Chat = ({ name, setName }) => {
   const { room } = useParams();
+
+  // const [roomName, setRoomName] = useState(`${room}`);
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
   const [typing, setTyping] = useState(false);
@@ -62,10 +62,27 @@ const Chat = ({ name }) => {
       setUsers(userList);
     });
 
-    socket.current.on('typingStatus', ({ users: userList }) => {
+    socket.current.on('users', ({ users: userList }) => {
       setUsers(userList);
     });
   }, []);
+
+  // const changeRoomName = useCallback((newRoomName) => {
+  //   if (newRoomName) {
+  //     socket.current.emit('changeRoomName', newRoomName);
+  //     socket.current.on('newRoomName', ({ roomName: changedName }) => {
+  //       setRoomName(changedName);
+  //     });
+  //   }
+  // }, [setRoomName]);
+
+  const changeUsername = useCallback((newUsername) => {
+    console.log(newUsername);
+    if (newUsername) {
+      socket.current.emit('changeUsername', newUsername);
+      setName(newUsername);
+    }
+  }, [setName, socket]);
 
   /* Typing Hook */
   useEffect(() => {
@@ -135,9 +152,9 @@ const Chat = ({ name }) => {
 
   /* File Preview */
   const setPreview = useCallback((e) => {
-    setUploadFlag(true);
+    setUploadFlag(!uploadFlag);
     setFile(e.target.files[0]);
-  }, [setFile, setUploadFlag]);
+  }, [setFile, setUploadFlag, uploadFlag]);
 
   /* FullScreen */
   return (
@@ -154,9 +171,15 @@ const Chat = ({ name }) => {
             toggleNotification={toggleNotification}
             soundChoice={soundChoice}
           />
-          <Menu setOpenMenu={setOpenMenu} />
           {
-                    uploadFlag && (<FilePreview file={file} sendImage={sendImage} />)
+                    uploadFlag && (
+                    <FilePreview
+                      file={file}
+                      sendImage={sendImage}
+                      uploadFlag={uploadFlag}
+                      setUploadFlag={setUploadFlag}
+                    />
+                    )
           }
           <div className="container">
             {
@@ -164,6 +187,7 @@ const Chat = ({ name }) => {
                       <VideoPlayer className="player" url={url} config={{ controls: true }} />
                     )
                   }
+            {/* <div className="slider"> slider </div> */}
             <Messages messages={messages} name={name} />
             <Typing users={users} name={name} />
             <Input
@@ -171,9 +195,16 @@ const Chat = ({ name }) => {
               setMessage={onMessage}
               sendMessage={sendMessage}
               setPreview={setPreview}
+              setOpenMenu={setOpenMenu}
+              openMenu={openMenu}
             />
           </div>
-          <Details users={users} room={room} />
+          <Details
+            users={users}
+            roomName={room}
+            name={name}
+            changeUsername={changeUsername}
+          />
         </div>
       </>
     </ThemeProvider>

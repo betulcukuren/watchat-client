@@ -77,25 +77,12 @@ export default createGlobalStyle`
     background-color:  ${({ theme }) => theme.bg};
   }
 
+  .title > .shareBtn > svg {
+    stroke: ${({ theme }) => theme.buttonColor};
+  }
+
   .count{
     color:  ${({ theme }) => theme.text};
-  }
-
-  .invite{
-    border: 1px solid ${({ theme }) => theme.main};
-  }
-
-  .invite:hover{
-    opacity:.5;
-  }
-
-  .invite > span{
-    color:  ${({ theme }) => theme.main};
-  }
-
-  .invite > .icon{
-    stroke:  ${({ theme }) => theme.main};
-    fill:  ${({ theme }) => theme.main};
   }
 
   .detail > .header{
@@ -125,7 +112,7 @@ export default createGlobalStyle`
     box-shadow: 0px 1px 2px  ${({ theme }) => theme.shadow};   
   }
 
-  .username {
+  .users > .item > .user  > p  {
     color: ${({ theme }) => theme.text};
   }
    

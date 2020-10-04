@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:18vw;
+    width:16vw;
     height:100vh;
     font-size:14px;
     padding-top:1.5em;
@@ -36,6 +36,23 @@
   .title > button {
     border:none;
     background-color: transparent;
+    margin-left:.5em;
+  }
+
+  .count{
+    margin:.5em;
+    font-size:12px;
+    font-style: italic;
+  }
+
+  .title{
+    font-weight: 700;
+    margin:0;
+    display:flex;
+  }
+
+  .title > .shareBtn {
+    font-size:1em;
   }
 
   .users {
@@ -63,27 +80,35 @@
   .users > .item {
     display: flex;
     align-items: center;
-    justify-content:space-between;
-    padding:.1em .5em;
+    justify-content:flex-start;
+    padding:.1em .1em;
     left:0;
     right:0;
     margin: .1em auto;
-    width:85%;
+    width:100%;
     height:5vh;
   }
 
-  .users > .item  > p {
+  .users > .item > .user{
+    width:95%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:.5em;
+  }
+
+  .users > .item > .user  > p {
     margin:0px;
     font-size:11px;
     overflow:hidden;
   }
 
-  .users > .item > button {
+  .users > .item > .user > button {
     border:none;
     background-color: transparent;
   }
 
-  .users > .item > button > .icon {
+  .users > .item > .user > button > .icon {
     fill: #888;
   }
 
@@ -91,86 +116,13 @@
     margin-bottom: 0px;
   }
 
-  .count{
-    margin:.5em;
-    font-size:12px;
-    font-style: italic;
-  }
-
-  .title{
-    font-weight: 700;
+  .return {
+    font-size:2em;
     margin:0;
+    position:absolute;
+    bottom:1.2em;
   }
 
-  .attachments{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    height:35vh;
-    width:100%;
-    overflow:auto;
-    margin-top:1vh; 
-    overflow:hidden;
-  }
-  
-  .attachments > .sections{
-    align-self: center;
-    padding:0;
-    margin:0;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    width:100%;
-    height:2em;
-  }
-
-  .sections > button {
-    width:8em;
-    border:none;
-    border-radius: 0;
-    margin:.1em;
-    padding:.5em;
-  }
-
-  .invite{
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-right:1em;
-    margin-bottom: .5em;
-    border:none;
-  }
-
-  .invite > .icon{
-    font-size:1.5em;
-    margin:.2em;
-  }
-
-  .edit{
-    margin:0;
-    margin-left:.5em;
-    border:none;
-    font-size:1.2em;
-  }
-
-  .media{
-    padding:.5em;
-    width: 100%;
-    height:100%;
-    display:grid;
-    grid-template-columns: repeat(3, 33%);
-    grid-template-rows: repeat(2, 50%);
-  }
-
-  .media > .item {
-    
-  }
-
-  .thumb{  
-    width:100%;
-    height:100%;
-  }
 
 
   @media (min-width: 320px) and (max-width: 1200px)  {

@@ -4,7 +4,7 @@ import { AiOutlineFullscreen } from 'react-icons/ai';
 
 import './VideoPlayer.css';
 
-const VideoPlayer = ({ url, setUrl }) => {
+const VideoPlayer = ({ url }) => {
   const makeScreenfull = () => {
     const elem = document.getElementById('player');
     if (elem.requestFullscreen) {
@@ -20,7 +20,7 @@ const VideoPlayer = ({ url, setUrl }) => {
 
   return (
     <div className="playerContainer">
-      <ReactPlayer id="player" className="player" url={url} setUrl={setUrl} config={{ controls: true }} />
+      <ReactPlayer id="player" className="player" url={url} config={{ controls: true }} />
       {/* <div className="playerSetting">
         <p>Paste your link</p>
         <input type

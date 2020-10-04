@@ -1,7 +1,6 @@
   .outerContainer {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+
     height: 100%;
     padding:0;
     margin:0;
@@ -12,11 +11,19 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 77vw;
+    width: 85vw;
   }
 
   audio {
     display:none;
+  }
+
+  .slider {
+    text-align: center;
+    letter-spacing: 10px;
+    background-color: #dee2e6;
+    cursor: row-resize;
+    user-select: none; /* disable selection */
   }
 
 

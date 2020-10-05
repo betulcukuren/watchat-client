@@ -11,7 +11,6 @@ const Details = ({
   const editUserName = () => {
     const element = document.getElementById('self');
     element.contentEditable = 'true';
-    changeUsername(element.innerHTML);
   };
 
   return (

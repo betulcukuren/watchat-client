@@ -27,6 +27,7 @@ const Chat = ({ name, setName }) => {
   const [soundChoice, setSoundChoice] = useState(true);
   const [url, setUrl] = useState('https://www.youtube.com/watch?v=sX7fd8uQles');
   const [openMenu, setOpenMenu] = useState(false);
+  const [check, setCheck] = useState(false);
 
   const [file, setFile] = useState([]);
   const [uploadFlag, setUploadFlag] = useState(false);
@@ -70,6 +71,7 @@ const Chat = ({ name, setName }) => {
     if (newUsername) {
       socket.current.emit('changeUsername', newUsername);
       setName(newUsername);
+      setCheck(false);
     }
   }, [setName, socket]);
 
@@ -192,6 +194,8 @@ const Chat = ({ name, setName }) => {
             roomName={room}
             name={name}
             changeUsername={changeUsername}
+            check={check}
+            setCheck={setCheck}
           />
         </div>
       </>

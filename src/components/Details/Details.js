@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
-import { MdExitToApp } from 'react-icons/md';
+import { MdExitToApp, MdCheck } from 'react-icons/md';
 import { FiShare2 } from 'react-icons/fi';
-
 import './Details.css';
 
 const Details = ({
-  users, roomName, name, changeUsername,
+  users, roomName, name, changeUsername, check, setCheck,
 }) => {
+  const [newName, setNewName] = useState('');
+
   const editUserName = () => {
     const element = document.getElementById('self');
     element.contentEditable = 'true';
+    element.focus();
+    setCheck(true);
+  };
+
+  const setName = () => {
+    const element = document.getElementById('self');
+    setNewName(element.innerHTML);
   };
 
   return (
@@ -21,7 +29,7 @@ const Details = ({
             {roomName}
             {' '}
           </p>
-          <button type="button" className="shareBtn"><FiShare2 /></button>
+          <button type="button" className="shareBtn" id="shareBtn"><FiShare2 /></button>
         </div>
         <p className="count">
           {users.length}
@@ -42,13 +50,24 @@ const Details = ({
                       <div className="user">
                         <p
                           id="self"
-                          onBlur={(e) => { changeUsername(e.currentTarget.innerHTML); }}
+                          onBlur={setName}
                         >
                           {' '}
                           {username}
                           {' '}
                         </p>
-                        <button type="button" onClick={editUserName}><FaEdit className="icon" /></button>
+                        <button
+                          type="button"
+                          onClick={
+                               check
+                                 ? (() => { changeUsername(newName); })
+                                 : (editUserName)
+                                }
+                        >
+                          {check
+                            ? <MdCheck className="icon" />
+                            : <FaEdit className="icon" />}
+                        </button>
                       </div>
                     )
                     : (

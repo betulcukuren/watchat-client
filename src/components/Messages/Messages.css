@@ -2,7 +2,7 @@
     padding: 1vh 12vh;
     overflow-y: auto;
     flex: auto;
-    height: 86vh;
+    height: 88vh;
     flex: 1; /* adjust automatically */
     min-height: 0;
   }

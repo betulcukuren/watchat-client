@@ -1,7 +1,9 @@
 
   .toggles{
     position:absolute;
-    top:0em;
+    top:0;
+    bottom:0;
+    margin:auto;
     width: 4em;
     height: 5em;
     display:flex;

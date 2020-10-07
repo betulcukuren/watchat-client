@@ -1,15 +1,14 @@
 
   .toggles{
     position:absolute;
-    top:0;
-    bottom:0;
+    top:1.5vh;
+    right:5vw;
     margin:auto;
-    width: 4em;
-    height: 5em;
+    width: 5vw;
+    height: 2em;
     display:flex;
     align-items:center;
     justify-content: center;
-    flex-direction: column;
     z-index:999;
   }
 
@@ -18,7 +17,7 @@
     background-color: transparent;
     font-size:1.2em;
     text-align: center;
-    margin:.2em;
+    margin:.1em;
   }
 
 

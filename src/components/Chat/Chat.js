@@ -25,12 +25,19 @@ const Chat = ({ name, setName }) => {
   const [messages, setMessages] = useState([]);
   const [theme, setTheme] = useState('light');
   const [soundChoice, setSoundChoice] = useState(true);
-  const [url, setUrl] = useState('https://www.youtube.com/watch?v=sX7fd8uQles');
   const [openMenu, setOpenMenu] = useState(false);
   const [check, setCheck] = useState(false);
-
   const [file, setFile] = useState([]);
   const [uploadFlag, setUploadFlag] = useState(false);
+  
+  /* Video Player States */
+  const [url, setUrl] = useState('https://www.youtube.com/watch?v=sX7fd8uQles');
+  const [playing, setPlaying] = useState(true);
+  const [volume, setVolume] = useState(0.8);
+  const [muted, setMuted] = useState(false);
+  const [played, setPlayed] = useState(0);
+  const [loaded, setLoaded] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const ENDPOINT = process.env.REACT_APP_ENDPOINT;
   const socket = useRef(io(ENDPOINT));
@@ -67,6 +74,7 @@ const Chat = ({ name, setName }) => {
     });
   }, []);
 
+  /* Username change */
   const changeUsername = useCallback((newUsername) => {
     if (newUsername) {
       socket.current.emit('changeUsername', newUsername);
@@ -147,7 +155,9 @@ const Chat = ({ name, setName }) => {
     setFile(e.target.files[0]);
   }, [setFile, setUploadFlag, uploadFlag]);
 
-  /* FullScreen */
+  /* Video Player */
+
+
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>

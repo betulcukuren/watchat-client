@@ -4,7 +4,9 @@ import { AiOutlineFullscreen } from 'react-icons/ai';
 
 import './VideoPlayer.css';
 
-const VideoPlayer = ({ url }) => {
+const VideoPlayer = ({
+  url, played, handleSeekMouseDown, handleSeekChange, handleSeekMouseUp,
+}) => {
   const makeScreenfull = () => {
     const elem = document.getElementById('player');
     if (elem.requestFullscreen) {
@@ -20,7 +22,33 @@ const VideoPlayer = ({ url }) => {
 
   return (
     <div className="playerContainer">
-      <ReactPlayer id="player" className="player" url={url} config={{ controls: true }} />
+      <div className="playerSection">
+        <ReactPlayer
+          id="player"
+          className="player"
+          url={url}
+          config={{
+            controls: true,
+            youtube: {
+              playerVars: { showinfo: 1 },
+            },
+          }}
+
+        />
+        <div className="wrap">
+          <input
+            className="range"
+            type="range"
+            min={0}
+            max={0.999999}
+            step="any"
+            value={played}
+            onMouseDown={handleSeekMouseDown}
+            onChange={handleSeekChange}
+            onMouseUp={handleSeekMouseUp}
+          />
+        </div>
+      </div>
       {/* <div className="playerSetting">
         <p>Paste your link</p>
         <input type

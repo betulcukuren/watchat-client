@@ -1,15 +1,9 @@
 
   .toggles{
-    position:absolute;
-    top:1.5vh;
-    right:5vw;
     margin:auto;
-    width: 5vw;
-    height: 2em;
     display:flex;
     align-items:center;
-    justify-content: center;
-    z-index:999;
+    justify-content: space-between;
   }
 
   .toggle{

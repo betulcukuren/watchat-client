@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
-import { MdExitToApp, MdCheck } from 'react-icons/md';
+import { MdExitToApp, MdCheck, MdClose } from 'react-icons/md';
 import { FiShare2 } from 'react-icons/fi';
+import Toggles from '../Toggles';
 import './Details.css';
 
 const Details = ({
-  users, roomName, name, changeUsername, check, setCheck,
+  users, roomName, name, changeUsername,
+  check, setCheck, toggleTheme,
+  theme, toggleNotification, soundChoice,
 }) => {
   const [newName, setNewName] = useState('');
 
@@ -22,16 +25,27 @@ const Details = ({
   };
 
   return (
-    <div className="detail">
-      <div className="header">
-        <div className="title">
+    <div className="detail" id="detailMenu">
+      <div className="header" id="detailHeader">
+        <div className="settings" id="mainSettings">
+          <Toggles
+            toggleTheme={toggleTheme}
+            theme={theme}
+            toggleNotification={toggleNotification}
+            soundChoice={soundChoice}
+          />
+          <button type="button">
+            <MdClose />
+          </button>
+        </div>
+        <div className="title" id="roomTitle">
           <p id="title">
             {roomName}
             {' '}
           </p>
           <button type="button" className="shareBtn" id="shareBtn"><FiShare2 /></button>
         </div>
-        <p className="count">
+        <p className="count" id="userCount">
           {users.length}
           {' '}
           people joined
@@ -40,7 +54,7 @@ const Details = ({
       {
         users
           ? (
-            <div className="users">
+            <div className="users" id="userList">
               {users.map(({ name: username, colorCode }) => (
                 <div key={username} className="item">
                   <img src={`https://ui-avatars.com/api/?name=${username}?&length=1&rounded=true&size=20&background=${colorCode}&color=f6f6f6`} alt="avatar" />

@@ -10,7 +10,6 @@ import Details from '../Details';
 import Messages from '../Messages';
 import Input from '../Input';
 import Typing from '../Typing';
-import Toggles from '../Toggles';
 import FilePreview from '../FilePreview';
 import VideoPlayer from '../VideoPlayer';
 
@@ -29,15 +28,16 @@ const Chat = ({ name, setName }) => {
   const [check, setCheck] = useState(false);
   const [file, setFile] = useState([]);
   const [uploadFlag, setUploadFlag] = useState(false);
-  
+
   /* Video Player States */
   const [url, setUrl] = useState('https://www.youtube.com/watch?v=sX7fd8uQles');
-  const [playing, setPlaying] = useState(true);
-  const [volume, setVolume] = useState(0.8);
-  const [muted, setMuted] = useState(false);
-  const [played, setPlayed] = useState(0);
-  const [loaded, setLoaded] = useState(0);
-  const [duration, setDuration] = useState(0);
+  // const [playing, setPlaying] = useState(true);
+  // const [volume, setVolume] = useState(0.8);
+  // const [muted, setMuted] = useState(false);
+  // const [played, setPlayed] = useState(0);
+  // const [seeking, setSeeking] = useState(false);
+  // const [loaded, setLoaded] = useState(0);
+  // const [duration, setDuration] = useState(0);
 
   const ENDPOINT = process.env.REACT_APP_ENDPOINT;
   const socket = useRef(io(ENDPOINT));
@@ -157,7 +157,6 @@ const Chat = ({ name, setName }) => {
 
   /* Video Player */
 
-
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
@@ -166,12 +165,6 @@ const Chat = ({ name, setName }) => {
         </audio>
         <GlobalStyles />
         <div className="outerContainer">
-          <Toggles
-            toggleTheme={toggleTheme}
-            theme={theme}
-            toggleNotification={toggleNotification}
-            soundChoice={soundChoice}
-          />
           {
                     uploadFlag && (
                     <FilePreview
@@ -185,7 +178,18 @@ const Chat = ({ name, setName }) => {
           <div className="container">
             {
                     openMenu && (
-                      <VideoPlayer className="player" url={url} config={{ controls: true }} />
+                      <VideoPlayer
+                        className="player"
+                        url={url}
+                        // setDuration={setDuration}
+                        // setPlayed={setPlayed}
+                        // setPlaying={setPlaying}
+                        // setSeeking={setSeeking}
+                        // setVolume={setVolume}
+                        // setMuted={setMuted}
+                        // setLoaded={setLoaded}
+                        config={{ controls: true }}
+                      />
                     )
                   }
             <Messages messages={messages} name={name} />
@@ -206,6 +210,10 @@ const Chat = ({ name, setName }) => {
             changeUsername={changeUsername}
             check={check}
             setCheck={setCheck}
+            toggleTheme={toggleTheme}
+            theme={theme}
+            toggleNotification={toggleNotification}
+            soundChoice={soundChoice}
           />
         </div>
       </>

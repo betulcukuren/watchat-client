@@ -5,7 +5,9 @@ import { AiOutlineFullscreen } from 'react-icons/ai';
 import './VideoPlayer.css';
 
 const VideoPlayer = ({
-  url, played, handleSeekMouseDown, handleSeekChange, handleSeekMouseUp,
+  url, setDuration, setSeeking, setPlayed,
+  setPlaying, setVolume, setMuted,
+  setLoaded, played, volume,
 }) => {
   const makeScreenfull = () => {
     const elem = document.getElementById('player');
@@ -33,6 +35,7 @@ const VideoPlayer = ({
               playerVars: { showinfo: 1 },
             },
           }}
+          seekTo={played}
 
         />
         <div className="wrap">
@@ -43,9 +46,9 @@ const VideoPlayer = ({
             max={0.999999}
             step="any"
             value={played}
-            onMouseDown={handleSeekMouseDown}
-            onChange={handleSeekChange}
-            onMouseUp={handleSeekMouseUp}
+            onMouseDown={() => { setSeeking(true); }}
+            onChange={(e) => setPlayed(parseFloat(e.currentTarget.value))}
+            onMouseUp={() => { setSeeking(false); }}
           />
         </div>
       </div>

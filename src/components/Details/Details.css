@@ -18,11 +18,10 @@
     width:16vw;
     height:100vh;
     font-size:14px;
-    padding-top:8vh;
+    padding-top:2vh;
     padding-bottom:10vh;
 
     /* box-shadow: inset 1px 0px 10px var(--aux-color); */
-
   }
   .detail > .header{
     height:15vh;
@@ -31,6 +30,33 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+  }
+
+  .settings {
+    width:100%;
+    display:flex;
+    margin:0;
+    padding:0 1em;
+    justify-content: space-between;
+    align-items: center;
+    font-size:1.2em;
+  }
+  
+  .settings > button {
+    width:20%;
+    border:none;
+    font-size:1.2em;
+    background-color: transparent;
+  }
+
+  .settings > button > svg{
+    fill: #ccc;
+    stroke: #ccc;
+  }
+  
+  .settings > .toggles {
+    width:80%;
+    justify-content: flex-start;
   }
 
   .title > button {
@@ -64,7 +90,7 @@
     width:100%;
     overflow:auto;
     padding:.8em;
-    margin:0;   
+    margin:2vh;   
   }
 
   .users::-webkit-scrollbar {

@@ -6,7 +6,7 @@ import './Toggles.css';
 const Toggles = ({
   toggleTheme, theme, soundChoice, toggleNotification,
 }) => (
-  <div className="toggles">
+  <div className="toggles" id="toggles">
     <button type="button" className="toggle" onClick={toggleTheme}>
       {
                 theme === 'light'

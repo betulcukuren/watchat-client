@@ -39,7 +39,7 @@ const Chat = ({ name, setName }) => {
   // const [loaded, setLoaded] = useState(0);
   // const [duration, setDuration] = useState(0);
 
-  const ENDPOINT = process.env.REACT_APP_ENDPOINT;
+  const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
   const socket = useRef(io(ENDPOINT));
 
   useEffect(() => {

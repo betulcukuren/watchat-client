@@ -1,5 +1,6 @@
 .playerContainer{
-  min-height:40vh;
+  position:relative;
+  height:60vh;
   padding:0;
   margin:0;
   width:100%;
@@ -8,57 +9,105 @@
   overflow: hidden;
   display:flex;
   align-items:center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
 }
 
 .playerSection{
+  position:relative;
   margin:0 !important;
   padding:0 !important;
   height:90% !important;
   width: 100% !important;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
 }
 
-.player{
-  margin:0 !important;
-  padding:0 !important;
-  width: 100% !important;
-  padding-top:3vh !important;
+.layer{
+  background: linear-gradient(180deg, rgba(255,255,255, 0) 0%, rgba(0,0,0,.5) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.fullscreen.button {
-  padding:0;
-  font-size:1.2em;
-  align-self:flex-end;
-  border-radius:0;
-  padding:.5em;
-  padding-bottom:.1em;
-  margin:.1em .2em 0 .5em;
+.toolbar{
+  position:absolute;
+  background:transparent;
+  color: #fff;
+  width:100%;
+  bottom:0;
+  margin-top:2vh;
+  padding:0vh 5vw;
+  display:flex;
+  flex-direction: column;
 }
 
-.fullscreen.icon {
-  stroke: #fff !important;
-  fill: #fff !important;
+.duration{
+  margin-bottom:.5em;
+  font-size:.9em;
+  margin-right:1em;
 }
 
-/* range style */
-
-.wrap {
+.controls {
+  position: relative;
+  width:100%;
+  display:flex;
+  justify-content: flex-start;
+  align-items:center;
   margin:0;
   padding:0;
 }
 
+.player{
+  justify-self: center;
+  margin:2vh 1vw !important;
+  padding:0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.fullscreen.control.button {
+  position:absolute;
+  right:0;
+  font-size:1.3em !important;
+
+}
+
+.control.button > .control.icon {
+  stroke: #fff !important;
+  fill: #fff !important;
+}
+
+.control.button{
+  width: 2em;
+  height:2em;
+  margin:0;
+  margin-right:1em;
+  padding:0;
+  font-size:1em !important;
+  cursor:pointer;
+  z-index:999;
+}
+
+/* range style */
+.wrap {
+  width:100%;
+  margin:0;
+  padding:0;
+  z-index:999;
+}
+
 .range {
   -webkit-appearance: none;
-  background: linear-gradient(to right,
-    #610042 0%, #610042 50%,
-    #777 50%, #777 62.5%,
-    #444 62.5%, #444 100%);
   cursor: pointer;
-  height: .2vh;
+  height: .5vh;
   margin: 0;
   vertical-align: bottom;
   width: 100%;
+  z-index:999;
 }
 .wrap:hover .range,
 .wrap.hover .range { height: .8vh; }

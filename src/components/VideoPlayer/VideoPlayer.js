@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import { AiOutlineFullscreen } from 'react-icons/ai';
+import { BiFullscreen } from 'react-icons/bi';
+import { FaPlay } from 'react-icons/fa';
+import { ImVolumeMedium, ImVolumeMute2 } from 'react-icons/im';
+import Duration from './Duration';
 
 import './VideoPlayer.css';
 
 const VideoPlayer = ({
-  url, setDuration, setSeeking, setPlayed,
-  setPlaying, setVolume, setMuted,
-  setLoaded, played, volume,
+  url, seeking, setSeeking, setPlayed, played,
 }) => {
+  const player = useRef(null);
+  const [duration, setDuration] = useState(0);
   const makeScreenfull = () => {
     const elem = document.getElementById('player');
     if (elem.requestFullscreen) {
@@ -22,24 +25,45 @@ const VideoPlayer = ({
     }
   };
 
+  const changePlayed = (e) => {
+    setPlayed(parseFloat(e.currentTarget.value));
+    setSeeking(false);
+    player.current.seekTo(parseFloat(e.currentTarget.value));
+  };
+
+  const handleProgress = (state) => {
+    if (!seeking) {
+      console.log(state);
+      setDuration(player.current.getDuration());
+      setPlayed(state.playedSeconds);
+      const range = document.getElementById('range');
+      setPlayed(player.current.played);
+      const playedGradient = (state.playedSeconds / duration) * 100;
+      console.log(`playedGradient:  ${playedGradient}`);
+      const loadedGradient = (state.loadedSeconds / duration) * 100;
+      range.style.background = `linear-gradient(to right,
+        red 0%, red ${playedGradient}%,
+        #777 ${playedGradient}%, #777 ${loadedGradient}%,
+        #444 ${loadedGradient}%, #444 100%)`;
+    }
+  };
+
   return (
     <div className="playerContainer">
       <div className="playerSection">
         <ReactPlayer
+          ref={player}
           id="player"
           className="player"
           url={url}
-          config={{
-            controls: true,
-            youtube: {
-              playerVars: { showinfo: 1 },
-            },
-          }}
-          seekTo={played}
-
+          onProgress={handleProgress}
         />
+      </div>
+
+      <div className="toolbar">
         <div className="wrap">
           <input
+            id="range"
             className="range"
             type="range"
             min={0}
@@ -47,17 +71,27 @@ const VideoPlayer = ({
             step="any"
             value={played}
             onMouseDown={() => { setSeeking(true); }}
-            onChange={(e) => setPlayed(parseFloat(e.currentTarget.value))}
+            onChange={changePlayed}
             onMouseUp={() => { setSeeking(false); }}
           />
         </div>
+        <div className="controls">
+          <button className="play control button" type="button">
+            <FaPlay className="control icon" />
+          </button>
+          <Duration seconds={duration} className="duration" />
+          <button className="volume control button" type="button">
+            <ImVolumeMedium className="control icon" />
+          </button>
+          <button type="button" className="fullscreen control button" onClick={makeScreenfull}><BiFullscreen className="control icon" /></button>
+        </div>
+        <div className="layer" />
       </div>
       {/* <div className="playerSetting">
         <p>Paste your link</p>
         <input type
         ="text" onChange={setUrl} />
       </div> */}
-      <button type="button" className="fullscreen button" onClick={makeScreenfull}><AiOutlineFullscreen className="fullscreen icon" /></button>
     </div>
   );
 };

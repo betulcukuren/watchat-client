@@ -31,13 +31,13 @@ const Chat = ({ name, setName }) => {
 
   /* Video Player States */
   const [url, setUrl] = useState('https://www.youtube.com/watch?v=sX7fd8uQles');
-  // const [playing, setPlaying] = useState(true);
-  // const [volume, setVolume] = useState(0.8);
-  // const [muted, setMuted] = useState(false);
-  // const [played, setPlayed] = useState(0);
-  // const [seeking, setSeeking] = useState(false);
-  // const [loaded, setLoaded] = useState(0);
-  // const [duration, setDuration] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const [volume, setVolume] = useState(0.8);
+  const [muted, setMuted] = useState(false);
+  const [played, setPlayed] = useState(0);
+  const [seeking, setSeeking] = useState(false);
+  const [loaded, setLoaded] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
   const socket = useRef(io(ENDPOINT));
@@ -181,13 +181,15 @@ const Chat = ({ name, setName }) => {
                       <VideoPlayer
                         className="player"
                         url={url}
-                        // setDuration={setDuration}
-                        // setPlayed={setPlayed}
-                        // setPlaying={setPlaying}
-                        // setSeeking={setSeeking}
-                        // setVolume={setVolume}
-                        // setMuted={setMuted}
-                        // setLoaded={setLoaded}
+                        played={played}
+                        seeking={seeking}
+                        setDuration={setDuration}
+                        setPlayed={setPlayed}
+                        setPlaying={setPlaying}
+                        setSeeking={setSeeking}
+                        setVolume={setVolume}
+                        setMuted={setMuted}
+                        setLoaded={setLoaded}
                         config={{ controls: true }}
                       />
                     )

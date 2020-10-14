@@ -28,7 +28,7 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  main: '#7f5d73',
+  main: '#709fb0',
   lightenMain: '#0e0d15',
   lightenAux: '#f6f6f6',
   aux: '#232034',
@@ -44,13 +44,13 @@ export const darkTheme = {
   shadow: '#0a090f',
   white: '#fff',
   otherMessageBg: '#181725',
-  userMessageBg: '#3a2734',
+  userMessageBg: '#709fb0',
   linkActive: '#47484a',
   linkActiveBg: '#100a1d',
-  buttonColor: '#7f5d73', /* 3e978b */
+  buttonColor: '#709fb0', /* 3e978b */
   toggleBg: '#181725',
   itemBg: '#1a1828',
   systemMsgBg: '#181725',
   systemMsg: '#7f5d73',
-  settingsBtn: '#86878b',
+  settingsBtn: '#709fb0',
 };

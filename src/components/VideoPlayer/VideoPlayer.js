@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import { BiFullscreen } from 'react-icons/bi';
-import { FaPlay } from 'react-icons/fa';
-import { ImVolumeMedium, ImVolumeMute2 } from 'react-icons/im';
+import {
+  BiFullscreen, BiPlayCircle, BiPauseCircle, BiVolumeMute, BiVolumeFull,
+} from 'react-icons/bi';
 import Duration from './Duration';
 
 import './VideoPlayer.css';
 
 const VideoPlayer = ({
-  url, seeking, setSeeking, setPlayed, played,
+  url, seeking, setSeeking, setPlayed, played, playing, setPlaying,
 }) => {
   const player = useRef(null);
   const [duration, setDuration] = useState(0);
@@ -33,23 +33,41 @@ const VideoPlayer = ({
 
   const handleProgress = (state) => {
     if (!seeking) {
-      console.log(state);
-      setDuration(player.current.getDuration());
-      setPlayed(state.playedSeconds);
       const range = document.getElementById('range');
+      setDuration(player.current.getDuration());
       setPlayed(player.current.played);
       const playedGradient = (state.playedSeconds / duration) * 100;
-      console.log(`playedGradient:  ${playedGradient}`);
       const loadedGradient = (state.loadedSeconds / duration) * 100;
       range.style.background = `linear-gradient(to right,
-        red 0%, red ${playedGradient}%,
-        #777 ${playedGradient}%, #777 ${loadedGradient}%,
-        #444 ${loadedGradient}%, #444 100%)`;
+        #709fb0 0%, #709fb0 ${playedGradient}%,
+        #4a4d4a ${playedGradient}%, #4a4d4a ${loadedGradient}%,
+        #1b1b1b ${loadedGradient}%, #1b1b1b 100%)`;
     }
   };
 
+  const setIsShown = (show) => {
+    const toolbar = document.getElementById('videoToolbar');
+    if (show) {
+      toolbar.style.display = 'flex';
+    } else {
+      toolbar.style.display = 'none';
+    }
+  };
+
+  const handlePlay = () => {
+    setPlaying(true);
+  };
+
+  const handlePause = () => {
+    setPlaying(false);
+  };
+
+  const handlePlayPause = () => {
+    setPlaying(!playing);
+  };
+
   return (
-    <div className="playerContainer">
+    <div className="playerContainer" onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
       <div className="playerSection">
         <ReactPlayer
           ref={player}
@@ -57,10 +75,13 @@ const VideoPlayer = ({
           className="player"
           url={url}
           onProgress={handleProgress}
+          playing={playing}
+          onPlay={handlePlay}
+          onPause={handlePause}
         />
       </div>
 
-      <div className="toolbar">
+      <div className="toolbar" id="videoToolbar">
         <div className="wrap">
           <input
             id="range"
@@ -76,16 +97,17 @@ const VideoPlayer = ({
           />
         </div>
         <div className="controls">
-          <button className="play control button" type="button">
-            <FaPlay className="control icon" />
+          <button className="play control button" type="button" onClick={handlePlayPause}>
+            {playing === true ? <BiPauseCircle className="control icon" />
+              : <BiPlayCircle className="control icon" />}
           </button>
           <Duration seconds={duration} className="duration" />
           <button className="volume control button" type="button">
-            <ImVolumeMedium className="control icon" />
+            <BiVolumeFull className="control icon" />
           </button>
           <button type="button" className="fullscreen control button" onClick={makeScreenfull}><BiFullscreen className="control icon" /></button>
         </div>
-        <div className="layer" />
+        {/* <div className="layer" /> */}
       </div>
       {/* <div className="playerSetting">
         <p>Paste your link</p>

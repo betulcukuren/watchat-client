@@ -28,10 +28,11 @@ const Chat = ({ name, setName }) => {
   const [check, setCheck] = useState(false);
   const [file, setFile] = useState([]);
   const [uploadFlag, setUploadFlag] = useState(false);
+  const [roomInfo, setRoomInfo] = useState({});
 
   /* Video Player States */
   const [url, setUrl] = useState('https://www.youtube.com/watch?v=sX7fd8uQles');
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.8);
   const [muted, setMuted] = useState(false);
   const [played, setPlayed] = useState(0);
@@ -39,7 +40,7 @@ const Chat = ({ name, setName }) => {
   const [loaded, setLoaded] = useState(0);
   const [duration, setDuration] = useState(0);
 
-  const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
+  const ENDPOINT = 'http://localhost:5000/';
   const socket = useRef(io(ENDPOINT));
 
   useEffect(() => {
@@ -67,6 +68,10 @@ const Chat = ({ name, setName }) => {
 
     socket.current.on('roomData', ({ users: userList }) => {
       setUsers(userList);
+    });
+
+    socket.current.on('room', (currentRoom) => {
+      setRoomInfo(currentRoom);
     });
 
     socket.current.on('users', ({ users: userList }) => {
@@ -157,6 +162,7 @@ const Chat = ({ name, setName }) => {
 
   /* Video Player */
 
+
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
@@ -180,8 +186,9 @@ const Chat = ({ name, setName }) => {
                     openMenu && (
                       <VideoPlayer
                         className="player"
-                        url={url}
-                        played={played}
+                        url={roomInfo.video.url}
+                        played={roomInfo.video.played}
+                        playing={roomInfo.video.playing}
                         seeking={seeking}
                         setDuration={setDuration}
                         setPlayed={setPlayed}

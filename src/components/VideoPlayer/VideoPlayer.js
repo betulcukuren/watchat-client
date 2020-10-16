@@ -8,7 +8,11 @@ import Duration from './Duration';
 import './VideoPlayer.css';
 
 const VideoPlayer = ({
-  url, onUrl, changeUrl, setUrl, seeking, setSeeking, setPlayed, played, playing, setPlaying,
+  url, onUrl, changeUrl,
+  muted, setMuted, volume, setVolume,
+  seeking, setSeeking,
+  setPlayed, played,
+  playing, handlePlayPause,
 }) => {
   const player = useRef(null);
   const [duration, setDuration] = useState(0);
@@ -45,20 +49,38 @@ const VideoPlayer = ({
     }
   };
 
-  const handlePlay = () => {
-    setPlaying(true);
+  const setIsShown = (display) => {
+    const toolbar = document.getElementById('videoToolbar');
+    if (display) {
+      toolbar.style.display = 'flex';
+    } else {
+      toolbar.style.display = 'none';
+    }
   };
 
-  const handlePause = () => {
-    setPlaying(false);
+  const showVolumeRange = (display) => {
+    const volumeRange = document.getElementById('volumeRange');
+    if (display) {
+      volumeRange.style.display = 'flex';
+    } else {
+      volumeRange.style.display = 'none';
+    }
   };
 
-  const handlePlayPause = () => {
-    setPlaying(!playing);
+  const play = () => {
+    handlePlayPause(true);
+  };
+
+  const pause = () => {
+    handlePlayPause(false);
   };
 
   return (
-    <div className="playerContainer">
+    <div
+      className="playerContainer"
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}
+    >
       <div className="playerSection">
         <ReactPlayer
           ref={player}
@@ -67,12 +89,19 @@ const VideoPlayer = ({
           url={url}
           onProgress={handleProgress}
           playing={playing}
-          onPlay={handlePlay}
-          onPause={handlePause}
+          onPlay={play}
+          onPause={pause}
+          muted={muted}
+          volume={volume}
+          width="100%"
+          height="100%"
         />
       </div>
 
-      <div className="toolbar" id="videoToolbar">
+      <div
+        className="toolbar"
+        id="videoToolbar"
+      >
         <div className="wrap">
           <input
             id="range"
@@ -89,14 +118,28 @@ const VideoPlayer = ({
         </div>
         <div className="controls">
           <div className="left control">
-            <button className="play control button" type="button" onClick={handlePlayPause}>
-              {playing === true ? <BiPauseCircle className="control icon" />
-                : <BiPlayCircle className="control icon" />}
+            <button className="play control button" type="button" onClick={() => handlePlayPause(!playing)}>
+              {
+              playing === true
+                ? <BiPauseCircle className="control icon" />
+                : <BiPlayCircle className="control icon" />
+              }
             </button>
             <Duration seconds={duration} className="duration" />
-            <button className="volume control button" type="button">
-              <BiVolumeFull className="control icon" />
+            <button className="volume control button" type="button" onClick={() => setMuted(!muted)}>
+              {
+              muted === true
+                ? <BiVolumeMute className="control icon" />
+                : (
+                  <BiVolumeFull
+                    className="control icon"
+                    onMouseOver={() => showVolumeRange(true)}
+                    onMouseLeave={() => showVolumeRange(false)}
+                  />
+                )
+                }
             </button>
+            <input type="range" id="volumeRange" className="volumeRange" />
           </div>
           <div className="center control">
             <p>paste url:</p>

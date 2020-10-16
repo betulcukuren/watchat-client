@@ -12,12 +12,12 @@ import Input from '../Input';
 import Typing from '../Typing';
 import FilePreview from '../FilePreview';
 import VideoPlayer from '../VideoPlayer';
-
 import './Chat.css';
 
 const Chat = ({ name, setName }) => {
   const { room } = useParams();
 
+  /* General States */
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
   const [typing, setTyping] = useState(false);
@@ -32,7 +32,6 @@ const Chat = ({ name, setName }) => {
 
   /* Video Player States */
   const [url, setUrl] = useState('');
-  const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.8);
   const [muted, setMuted] = useState(false);
   const [played, setPlayed] = useState(0);
@@ -50,7 +49,6 @@ const Chat = ({ name, setName }) => {
       }
     });
   }, [socket, ENDPOINT, name, room]);
-
   useEffect(() => {
     socket.current.on('message', (msg) => {
       if (msg.image) {
@@ -111,7 +109,6 @@ const Chat = ({ name, setName }) => {
       reader.readAsDataURL(file);
     }
   }, [file, setUploadFlag]);
-
   const onMessage = useCallback((e) => {
     const { currentTarget: { value } } = e;
     setMessage(value);
@@ -139,7 +136,6 @@ const Chat = ({ name, setName }) => {
       setSoundChoice(true);
     }
   }, [soundChoice, setSoundChoice]);
-
   useEffect(() => {
     if (document.visibilityState !== 'visible' && soundChoice) {
       document.querySelector('audio').play();
@@ -157,14 +153,17 @@ const Chat = ({ name, setName }) => {
     const { currentTarget: { value } } = e;
     setUrl(value);
   }, [setUrl]);
-
   const changeUrl = useCallback((e) => {
     e.currentTarget.value = '';
     roomInfo.video.url = url;
-    roomInfo.video.playing = true;
     roomInfo.video.user = name;
     socket.current.emit('changeVideoUrl', roomInfo);
   }, [roomInfo, name, url]);
+  const handlePlayPause = useCallback((playing) => {
+    roomInfo.video.playing = playing;
+    roomInfo.video.user = name;
+    socket.current.emit('handlePlayPause', roomInfo, playing);
+  }, [roomInfo, name]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -195,9 +194,11 @@ const Chat = ({ name, setName }) => {
                         seeking={seeking}
                         setDuration={setDuration}
                         setPlayed={setPlayed}
-                        setPlaying={setPlaying}
+                        handlePlayPause={handlePlayPause}
                         setSeeking={setSeeking}
+                        volume={volume}
                         setVolume={setVolume}
+                        muted={muted}
                         setMuted={setMuted}
                         setLoaded={setLoaded}
                         changeUrl={changeUrl}

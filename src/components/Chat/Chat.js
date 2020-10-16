@@ -31,7 +31,7 @@ const Chat = ({ name, setName }) => {
   const [roomInfo, setRoomInfo] = useState({});
 
   /* Video Player States */
-  const [url, setUrl] = useState('https://www.youtube.com/watch?v=sX7fd8uQles');
+  const [url, setUrl] = useState('');
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.8);
   const [muted, setMuted] = useState(false);
@@ -60,10 +60,6 @@ const Chat = ({ name, setName }) => {
       } else {
         setMessages((msgs) => [...msgs, msg]);
       }
-    });
-
-    socket.current.on('url', ({ url: videoUrl }) => {
-      setUrl(videoUrl);
     });
 
     socket.current.on('roomData', ({ users: userList }) => {
@@ -98,11 +94,7 @@ const Chat = ({ name, setName }) => {
     event.preventDefault();
 
     if (message) {
-      if (message.indexOf('http') > -1) {
-        socket.current.emit('videoUrl', message, () => setMessage(''));
-      } else {
-        socket.current.emit('sendMessage', message, () => setMessage(''));
-      }
+      socket.current.emit('sendMessage', message, () => setMessage(''));
       setTyping(false);
     }
   }, [setMessage, message, setTyping]);
@@ -161,7 +153,18 @@ const Chat = ({ name, setName }) => {
   }, [setFile, setUploadFlag, uploadFlag]);
 
   /* Video Player */
+  const onUrl = useCallback((e) => {
+    const { currentTarget: { value } } = e;
+    setUrl(value);
+  }, [setUrl]);
 
+  const changeUrl = useCallback((e) => {
+    e.currentTarget.value = '';
+    roomInfo.video.url = url;
+    roomInfo.video.playing = true;
+    roomInfo.video.user = name;
+    socket.current.emit('changeVideoUrl', roomInfo);
+  }, [roomInfo, name, url]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -197,6 +200,8 @@ const Chat = ({ name, setName }) => {
                         setVolume={setVolume}
                         setMuted={setMuted}
                         setLoaded={setLoaded}
+                        changeUrl={changeUrl}
+                        onUrl={onUrl}
                         config={{ controls: true }}
                       />
                     )

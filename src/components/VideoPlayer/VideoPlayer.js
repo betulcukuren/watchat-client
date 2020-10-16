@@ -8,7 +8,7 @@ import Duration from './Duration';
 import './VideoPlayer.css';
 
 const VideoPlayer = ({
-  url, seeking, setSeeking, setPlayed, played, playing, setPlaying,
+  url, onUrl, changeUrl, setUrl, seeking, setSeeking, setPlayed, played, playing, setPlaying,
 }) => {
   const player = useRef(null);
   const [duration, setDuration] = useState(0);
@@ -45,15 +45,6 @@ const VideoPlayer = ({
     }
   };
 
-  const setIsShown = (show) => {
-    const toolbar = document.getElementById('videoToolbar');
-    if (show) {
-      toolbar.style.display = 'flex';
-    } else {
-      toolbar.style.display = 'none';
-    }
-  };
-
   const handlePlay = () => {
     setPlaying(true);
   };
@@ -67,7 +58,7 @@ const VideoPlayer = ({
   };
 
   return (
-    <div className="playerContainer" onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+    <div className="playerContainer">
       <div className="playerSection">
         <ReactPlayer
           ref={player}
@@ -97,15 +88,29 @@ const VideoPlayer = ({
           />
         </div>
         <div className="controls">
-          <button className="play control button" type="button" onClick={handlePlayPause}>
-            {playing === true ? <BiPauseCircle className="control icon" />
-              : <BiPlayCircle className="control icon" />}
-          </button>
-          <Duration seconds={duration} className="duration" />
-          <button className="volume control button" type="button">
-            <BiVolumeFull className="control icon" />
-          </button>
-          <button type="button" className="fullscreen control button" onClick={makeScreenfull}><BiFullscreen className="control icon" /></button>
+          <div className="left control">
+            <button className="play control button" type="button" onClick={handlePlayPause}>
+              {playing === true ? <BiPauseCircle className="control icon" />
+                : <BiPlayCircle className="control icon" />}
+            </button>
+            <Duration seconds={duration} className="duration" />
+            <button className="volume control button" type="button">
+              <BiVolumeFull className="control icon" />
+            </button>
+          </div>
+          <div className="center control">
+            <p>paste url:</p>
+            <input
+              className="input videoLink"
+              type="input"
+              placeholder="Enter an URL of YouTube, Twitch, DailyMotion, Vimeo, SoundCloud"
+              onChange={onUrl}
+              onKeyPress={(e) => (e.key === 'Enter' ? changeUrl(e) : '')}
+            />
+          </div>
+          <div className="right control">
+            <button type="button" className="fullscreen control button" onClick={makeScreenfull}><BiFullscreen className="control icon" /></button>
+          </div>
         </div>
         {/* <div className="layer" /> */}
       </div>

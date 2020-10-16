@@ -1,10 +1,10 @@
 // theme.js
 export const lightTheme = {
   main: '#4a4d4a',
-  lightenMain: '#e7e7e7',
+  bg: '#e7e7e7',
   lightenAux: '#f6f6f6',
   aux: '#caccca',
-  bg: '#f1f1f1',
+  rightMenuBg: '#f1f1f1',
   text: '#3B403A',
   messageBox: '#F3F3F3',
   message: '#ddd',
@@ -29,10 +29,10 @@ export const lightTheme = {
 
 export const darkTheme = {
   main: '#709fb0',
-  lightenMain: '#0e0d15',
+  bg: '#0e0d15',
   lightenAux: '#f6f6f6',
   aux: '#232034',
-  bg: '#161422',
+  rightMenuBg: '#161422',
   inputBg: '#100f18',
   inputColor: '#fff',
   formBg: '#0e0d15',
@@ -44,7 +44,7 @@ export const darkTheme = {
   shadow: '#0a090f',
   white: '#fff',
   otherMessageBg: '#181725',
-  userMessageBg: '#709fb0',
+  userMessageBg: '#2B454F',
   linkActive: '#47484a',
   linkActiveBg: '#100a1d',
   buttonColor: '#709fb0', /* 3e978b */

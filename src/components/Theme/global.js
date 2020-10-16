@@ -8,11 +8,11 @@ export default createGlobalStyle`
   /******  chat colors ***** */
 
   .outerContainer {
-    background-color:  ${({ theme }) => theme.bg};
+    background-color:  ${({ theme }) => theme.rightMenuBg};
   }
   
   .container {
-    background: ${({ theme }) => theme.lightenMain};
+    background: ${({ theme }) => theme.bg};
   }
   
   .slider {
@@ -40,11 +40,11 @@ export default createGlobalStyle`
 
 .menu{
     color: ${({ theme }) => theme.text};
-    background-color: ${({ theme }) => theme.bg};
+    background-color: ${({ theme }) => theme.rightMenuBg};
 }
 
 .tools > .tool {
-  border-bottom:1px solid ${({ theme }) => theme.lightenMain};
+  border-bottom:1px solid ${({ theme }) => theme.bg};
 }
 
 .return{
@@ -61,7 +61,7 @@ export default createGlobalStyle`
 }
 
 .tool:hover{
-  background-color: ${({ theme }) => theme.lightenMain};
+  background-color: ${({ theme }) => theme.bg};
 }
 
 .toggle > svg {
@@ -74,7 +74,7 @@ export default createGlobalStyle`
   }
  
   .detail {
-    background-color:  ${({ theme }) => theme.bg};
+    background-color:  ${({ theme }) => theme.rightMenuBg};
   }
 
   .title > .shareBtn > svg {
@@ -87,7 +87,7 @@ export default createGlobalStyle`
 
   .detail > .header{
     color: ${({ theme }) => theme.text};
-    // border-bottom:.1em solid  ${({ theme }) => theme.lightenMain};
+    // border-bottom:.1em solid  ${({ theme }) => theme.bg};
   }
 
   .edit {
@@ -104,7 +104,7 @@ export default createGlobalStyle`
   }
 
   .users{
-    border-top:.1em solid  ${({ theme }) => theme.lightenMain};
+    border-top:.1em solid  ${({ theme }) => theme.bg};
   }
 
   .users > .item {
@@ -119,7 +119,7 @@ export default createGlobalStyle`
   /***** input colors ******/
   .form {
     // background: ${({ theme }) => theme.formBg};
-    // border:1px solid ${({ theme }) => theme.bg};
+    // border:1px solid ${({ theme }) => theme.rightMenuBg};
   }
 
   .input {

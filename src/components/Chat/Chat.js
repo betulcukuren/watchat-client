@@ -36,7 +36,7 @@ const Chat = ({ name, setName }) => {
   const [muted, setMuted] = useState(false);
   const [seeking, setSeeking] = useState(false);
 
-  const ENDPOINT = 'http://localhost:5000/';
+  const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
   const socket = useRef(io(ENDPOINT));
 
   useEffect(() => {

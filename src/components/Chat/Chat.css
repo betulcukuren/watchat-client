@@ -18,6 +18,10 @@
     display:none;
   }
 
+  .button {
+    cursor:pointer !important;
+  }
+
   .slider {
     text-align: center;
     letter-spacing: 10px;

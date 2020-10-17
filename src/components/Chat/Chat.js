@@ -34,10 +34,7 @@ const Chat = ({ name, setName }) => {
   const [url, setUrl] = useState('');
   const [volume, setVolume] = useState(0.8);
   const [muted, setMuted] = useState(false);
-  const [played, setPlayed] = useState(0);
   const [seeking, setSeeking] = useState(false);
-  const [loaded, setLoaded] = useState(0);
-  const [duration, setDuration] = useState(0);
 
   const ENDPOINT = 'http://localhost:5000/';
   const socket = useRef(io(ENDPOINT));
@@ -164,6 +161,10 @@ const Chat = ({ name, setName }) => {
     roomInfo.video.user = name;
     socket.current.emit('handlePlayPause', roomInfo, playing);
   }, [roomInfo, name]);
+  const setPlayed = useCallback((played) => {
+    roomInfo.video.playedSeconds = played;
+    socket.current.emit('updateVideo', roomInfo);
+  }, [roomInfo]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -189,10 +190,9 @@ const Chat = ({ name, setName }) => {
                       <VideoPlayer
                         className="player"
                         url={roomInfo.video.url}
-                        played={roomInfo.video.played}
+                        played={roomInfo.video.playedSeconds}
                         playing={roomInfo.video.playing}
                         seeking={seeking}
-                        setDuration={setDuration}
                         setPlayed={setPlayed}
                         handlePlayPause={handlePlayPause}
                         setSeeking={setSeeking}
@@ -200,10 +200,8 @@ const Chat = ({ name, setName }) => {
                         setVolume={setVolume}
                         muted={muted}
                         setMuted={setMuted}
-                        setLoaded={setLoaded}
                         changeUrl={changeUrl}
                         onUrl={onUrl}
-                        config={{ controls: true }}
                       />
                     )
                   }

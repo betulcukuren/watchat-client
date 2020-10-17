@@ -39,7 +39,11 @@ const VideoPlayer = ({
     if (!seeking) {
       const range = document.getElementById('range');
       setDuration(player.current.getDuration());
-      setPlayed(player.current.played);
+      if (state.playedSeconds === 0) {
+        player.current.seekTo(parseFloat(played));
+      } else {
+        setPlayed(state.playedSeconds);
+      }
       const playedGradient = (state.playedSeconds / duration) * 100;
       const loadedGradient = (state.loadedSeconds / duration) * 100;
       range.style.background = `linear-gradient(to right,
@@ -55,15 +59,6 @@ const VideoPlayer = ({
       toolbar.style.display = 'flex';
     } else {
       toolbar.style.display = 'none';
-    }
-  };
-
-  const showVolumeRange = (display) => {
-    const volumeRange = document.getElementById('volumeRange');
-    if (display) {
-      volumeRange.style.display = 'flex';
-    } else {
-      volumeRange.style.display = 'none';
     }
   };
 
@@ -125,21 +120,30 @@ const VideoPlayer = ({
                 : <BiPlayCircle className="control icon" />
               }
             </button>
+            <Duration seconds={Math.floor(parseFloat(played))} className="duration" />
+            <span> / </span>
             <Duration seconds={duration} className="duration" />
             <button className="volume control button" type="button" onClick={() => setMuted(!muted)}>
               {
-              muted === true
+              (muted === true || volume === 0)
                 ? <BiVolumeMute className="control icon" />
                 : (
                   <BiVolumeFull
                     className="control icon"
-                    onMouseOver={() => showVolumeRange(true)}
-                    onMouseLeave={() => showVolumeRange(false)}
                   />
                 )
                 }
             </button>
-            <input type="range" id="volumeRange" className="volumeRange" />
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step="any"
+              id="volumeRange"
+              className="volumeRange"
+              value={volume}
+              onChange={(e) => setVolume(parseFloat(e.target.value))}
+            />
           </div>
           <div className="center control">
             <p>paste url:</p>

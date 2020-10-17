@@ -11,10 +11,7 @@ const format = (seconds) => {
     if (hh) {
       return `${hh}:${pad(mm)}:${ss}`;
     }
-    if (mm) {
-      return `${mm}:${ss}`;
-    }
-    return 'LIVE';
+    return `${mm}:${ss}`;
   }
 };
 

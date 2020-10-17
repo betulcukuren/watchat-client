@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import ReactPlayer from 'react-player';
 import {
   BiFullscreen, BiPlayCircle, BiPauseCircle, BiVolumeMute, BiVolumeFull,
@@ -13,8 +13,8 @@ const VideoPlayer = ({
   seeking, setSeeking,
   setPlayed, played,
   playing, handlePlayPause,
-}) => {
-  const player = useRef(null);
+  seekToVideo,
+}, ref) => {
   const [duration, setDuration] = useState(0);
   const makeScreenfull = () => {
     const elem = document.getElementById('player');
@@ -29,18 +29,13 @@ const VideoPlayer = ({
     }
   };
 
-  const changePlayed = (e) => {
-    setPlayed(parseFloat(e.currentTarget.value));
-    setSeeking(false);
-    player.current.seekTo(parseFloat(e.currentTarget.value));
-  };
-
   const handleProgress = (state) => {
     if (!seeking) {
       const range = document.getElementById('range');
-      setDuration(player.current.getDuration());
+      setDuration(ref.current.getDuration());
       if (state.playedSeconds === 0) {
-        player.current.seekTo(parseFloat(played));
+        ref.current.seekTo(parseFloat(played));
+        setPlayed(parseFloat(played));
       } else {
         setPlayed(state.playedSeconds);
       }
@@ -78,7 +73,7 @@ const VideoPlayer = ({
     >
       <div className="playerSection">
         <ReactPlayer
-          ref={player}
+          ref={ref}
           id="player"
           className="player"
           url={url}
@@ -107,7 +102,7 @@ const VideoPlayer = ({
             step="any"
             value={played}
             onMouseDown={() => { setSeeking(true); }}
-            onChange={changePlayed}
+            onChange={(e) => seekToVideo(e)}
             onMouseUp={() => { setSeeking(false); }}
           />
         </div>
@@ -170,4 +165,4 @@ const VideoPlayer = ({
   );
 };
 
-export default VideoPlayer;
+export default forwardRef(VideoPlayer);

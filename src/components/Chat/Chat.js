@@ -14,8 +14,12 @@ import FilePreview from '../FilePreview';
 import VideoPlayer from '../VideoPlayer';
 import './Chat.css';
 
+const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
+const socket = io(ENDPOINT);
+
 const Chat = ({ name, setName }) => {
   const { room } = useParams();
+  const player = useRef(null);
 
   /* General States */
   const [users, setUsers] = useState([]);
@@ -36,18 +40,15 @@ const Chat = ({ name, setName }) => {
   const [muted, setMuted] = useState(false);
   const [seeking, setSeeking] = useState(false);
 
-  const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
-  const socket = useRef(io(ENDPOINT));
-
   useEffect(() => {
-    socket.current.emit('join', { name, room }, (error) => {
+    socket.emit('join', { name, room }, (error) => {
       if (error) {
         console.log(error);
       }
     });
-  }, [socket, ENDPOINT, name, room]);
+  }, [name, room]);
   useEffect(() => {
-    socket.current.on('message', (msg) => {
+    socket.on('message', (msg) => {
       if (msg.image) {
         const img = new Image();
         img.src = `data:image/jpg;base64,${msg.image}`;
@@ -57,15 +58,20 @@ const Chat = ({ name, setName }) => {
       }
     });
 
-    socket.current.on('roomData', ({ users: userList }) => {
+    socket.on('roomData', ({ users: userList }) => {
       setUsers(userList);
     });
 
-    socket.current.on('room', (currentRoom) => {
+    socket.on('room', (currentRoom) => {
       setRoomInfo(currentRoom);
     });
 
-    socket.current.on('users', ({ users: userList }) => {
+    socket.on('seconds', (sec) => {
+      player.current.seekTo(parseFloat(sec));
+      console.log(sec);
+    });
+
+    socket.on('users', ({ users: userList }) => {
       setUsers(userList);
     });
   }, []);
@@ -73,23 +79,23 @@ const Chat = ({ name, setName }) => {
   /* Username change */
   const changeUsername = useCallback((newUsername) => {
     if (newUsername) {
-      socket.current.emit('changeUsername', newUsername);
+      socket.emit('changeUsername', newUsername);
       setName(newUsername);
       setCheck(false);
     }
-  }, [setName, socket]);
+  }, [setName]);
 
   /* Typing Hook */
   useEffect(() => {
-    socket.current.emit('typing', typing);
-  }, [typing, socket]);
+    socket.emit('typing', typing);
+  }, [typing]);
 
   /* Typing & Send Message */
   const sendMessage = useCallback((event) => {
     event.preventDefault();
 
     if (message) {
-      socket.current.emit('sendMessage', message, () => setMessage(''));
+      socket.emit('sendMessage', message, () => setMessage(''));
       setTyping(false);
     }
   }, [setMessage, message, setTyping]);
@@ -100,7 +106,7 @@ const Chat = ({ name, setName }) => {
       const reader = new FileReader();
       reader.onload = () => {
         const base64 = reader.result;
-        socket.current.emit('sendMessage', base64, () => setFile([]));
+        socket.emit('sendMessage', base64, () => setFile([]));
       };
       setUploadFlag(false);
       reader.readAsDataURL(file);
@@ -152,19 +158,23 @@ const Chat = ({ name, setName }) => {
   }, [setUrl]);
   const changeUrl = useCallback((e) => {
     e.currentTarget.value = '';
-    roomInfo.video.url = url;
-    roomInfo.video.user = name;
-    socket.current.emit('changeVideoUrl', roomInfo);
+    setRoomInfo({ video: { ...roomInfo.video, url, user: name } });
+    socket.emit('changeVideoUrl', { video: { ...roomInfo.video, url, user: name } });
   }, [roomInfo, name, url]);
   const handlePlayPause = useCallback((playing) => {
-    roomInfo.video.playing = playing;
-    roomInfo.video.user = name;
-    socket.current.emit('handlePlayPause', roomInfo, playing);
+    setRoomInfo({ video: { ...roomInfo.video, user: name, playing } });
+    socket.emit('handlePlayPause', { video: { ...roomInfo.video, user: name, playing } }, playing);
   }, [roomInfo, name]);
   const setPlayed = useCallback((played) => {
-    roomInfo.video.playedSeconds = played;
-    socket.current.emit('updateVideo', roomInfo);
+    setRoomInfo({ video: { ...roomInfo.video, playedSeconds: played } });
+    socket.emit('updateVideo', { video: { ...roomInfo.video, playedSeconds: played } });
   }, [roomInfo]);
+  const seekToVideo = useCallback((e) => {
+    setSeeking(false);
+    const played = parseFloat(e.currentTarget.value);
+    setRoomInfo({ video: { ...roomInfo.video, playedSeconds: played } });
+    socket.emit('seekToVideo', { video: { ...roomInfo.video, playedSeconds: played } });
+  }, [setRoomInfo, roomInfo, setSeeking]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -186,8 +196,9 @@ const Chat = ({ name, setName }) => {
           }
           <div className="container">
             {
-                    openMenu && (
+                    Object.keys(roomInfo).length > 0 && (
                       <VideoPlayer
+                        ref={player}
                         className="player"
                         url={roomInfo.video.url}
                         played={roomInfo.video.playedSeconds}
@@ -202,6 +213,7 @@ const Chat = ({ name, setName }) => {
                         setMuted={setMuted}
                         changeUrl={changeUrl}
                         onUrl={onUrl}
+                        seekToVideo={seekToVideo}
                       />
                     )
                   }

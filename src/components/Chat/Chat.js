@@ -28,7 +28,7 @@ const Chat = ({ name, setName }) => {
   const [messages, setMessages] = useState([]);
   const [theme, setTheme] = useState('light');
   const [soundChoice, setSoundChoice] = useState(true);
-  const [openMenu, setOpenMenu] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
   const [check, setCheck] = useState(false);
   const [file, setFile] = useState([]);
   const [uploadFlag, setUploadFlag] = useState(false);
@@ -196,7 +196,7 @@ const Chat = ({ name, setName }) => {
           }
           <div className="container">
             {
-                    Object.keys(roomInfo).length > 0 && openMenu && (
+                    Object.keys(roomInfo).length > 0 && (
                       <VideoPlayer
                         ref={player}
                         className="player"

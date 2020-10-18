@@ -68,7 +68,6 @@ const Chat = ({ name, setName }) => {
 
     socket.on('seconds', (sec) => {
       player.current.seekTo(parseFloat(sec));
-      console.log(sec);
     });
 
     socket.on('users', ({ users: userList }) => {

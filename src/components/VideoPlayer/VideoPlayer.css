@@ -105,11 +105,11 @@
 
 .input.videoLink {
   width: 35vw;
-  height:3vh;
+  height:2.5vh;
   font-size:14px;
   background: #e7e7e7;
   border-color: #4a4d4a;
-  padding:2.3vh;
+  padding:2vh;
 }
 
 .input.videoLink:focus {
@@ -118,7 +118,6 @@
 
 .volumeRange {
   width: 5vw;
-  margin-left: 0px;
 }
 
 /* range style */
@@ -159,14 +158,6 @@
 .loaded .range::-webkit-slider-thumb {
   transition: 0.1s ease-in;
 }
-
-:focus {
-  outline: none;
-}
-
-
-
-
 
 
 @media (min-width: 320px) and (max-width: 1200px) {

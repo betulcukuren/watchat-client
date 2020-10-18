@@ -29,14 +29,14 @@ export const lightTheme = {
 
 export const darkTheme = {
   main: '#709fb0',
-  bg: '#0e0d15',
+  bg: '#010203',
   lightenAux: '#f6f6f6',
-  aux: '#232034',
-  rightMenuBg: '#161422',
-  inputBg: '#100f18',
+  aux: '#0a0b0c',
+  rightMenuBg: '#0a0b0c',
+  inputBg: '#0d0e0f',
   inputColor: '#fff',
   formBg: '#0e0d15',
-  text: '#86878b',
+  text: '#eee',
   otherMessage: '#fff',
   messageBox: '#161422',
   message: '#161422',
@@ -49,8 +49,8 @@ export const darkTheme = {
   linkActiveBg: '#100a1d',
   buttonColor: '#709fb0', /* 3e978b */
   toggleBg: '#181725',
-  itemBg: '#1a1828',
-  systemMsgBg: '#181725',
+  itemBg: '#151617',
+  systemMsgBg: '#0d0e0f',
   systemMsg: '#7f5d73',
   settingsBtn: '#709fb0',
 };

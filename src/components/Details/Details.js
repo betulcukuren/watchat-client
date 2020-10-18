@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FaEdit } from 'react-icons/fa';
-import { MdExitToApp, MdCheck, MdClose } from 'react-icons/md';
+import { FaEdit, FaUserAlt } from 'react-icons/fa';
+import { MdExitToApp, MdCheck } from 'react-icons/md';
 import { FiShare2 } from 'react-icons/fi';
 import Toggles from '../Toggles';
 import './Details.css';
@@ -34,9 +34,6 @@ const Details = ({
             toggleNotification={toggleNotification}
             soundChoice={soundChoice}
           />
-          <button type="button">
-            <MdClose />
-          </button>
         </div>
         <div className="title" id="roomTitle">
           <p id="title">
@@ -48,16 +45,15 @@ const Details = ({
         <p className="count" id="userCount">
           {users.length}
           {' '}
-          people joined
+          <FaUserAlt />
         </p>
       </div>
       {
         users
           ? (
             <div className="users" id="userList">
-              {users.map(({ name: username, colorCode }) => (
+              {users.map(({ name: username }) => (
                 <div key={username} className="item">
-                  <img src={`https://ui-avatars.com/api/?name=${username}?&length=1&rounded=true&size=20&background=${colorCode}&color=f6f6f6`} alt="avatar" />
 
                   { username === name
                     ? (

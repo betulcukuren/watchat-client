@@ -16,7 +16,7 @@ const SignIn = ({ history, setName }) => {
   return (
     <div className="joinOuterContainer">
       <div className="joinInnerContainer">
-        <h1 className="heading">chattie</h1>
+        <h1 className="heading">watchat</h1>
         <div>
           <input
             placeholder="username"

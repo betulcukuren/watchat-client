@@ -1,7 +1,7 @@
 .filePreview.container{
     width:100%;
     height:100%;
-    background-color: #0e0d15;
+    background-color: #010203;
     display:flex;
     flex-direction: column;
     align-items:center;
@@ -20,11 +20,12 @@
     display:flex;
     align-items: center;
     justify-content: flex-start;
-    background-color: #ee6f57;
-    color: #f1f1f1;
+    background-color: #121314;
+    color: #eee;
     padding:2vw;
     font-size:1.1em;
     letter-spacing: .05em;
+    opacity:.8;
 }
 
 .filePreview > .header > button {
@@ -36,7 +37,7 @@
 }
 
 .header > button > .icon {
-    fill: #f1f1f1;
+    fill: #eee;
 }
 
 .filePreview > .preview > img{
@@ -47,7 +48,7 @@
 .filePreview > .footer {
     width:100%;
     height:20vh;
-    background-color: #161522;
+    background-color: #070809;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -61,7 +62,7 @@
     position:absolute;
     right:20vw;
     bottom:15vh;
-    background-color: #ee6f57;
+    background-color: #709fb0;
 }
 
 .footer > .preview-thumbs{
@@ -71,7 +72,7 @@
 
 .footer > button > .icon {
     font-size:1.5em;
-    fill: #f1f1f1;
+    fill: #eee;
 }
 
 .previewThumbs {
@@ -110,11 +111,11 @@
 .addFile > button {
     border:none;
     background-color: transparent;
-    color: #ee6f57;
+    color: #709fb0;
     text-transform: uppercase;
 }
 
 .addFile > button > .icon {
     font-size:2em;
-    fill: #ee6f57;
+    fill: #709fb0;
 }

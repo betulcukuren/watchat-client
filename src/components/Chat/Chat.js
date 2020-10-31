@@ -17,10 +17,10 @@ import VideoPlayer from '../VideoPlayer';
 import Toggles from '../Toggles';
 import './Chat.css';
 
-const ENDPOINT = 'http://localhost:5000/';
+const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
 const socket = io(ENDPOINT);
 
-const Chat = ({ name, setName }) => {
+const Chat = ({ name }) => {
   const { room } = useParams();
   const player = useRef(null);
 
@@ -32,7 +32,7 @@ const Chat = ({ name, setName }) => {
   const [theme, setTheme] = useState('light');
   const [soundChoice, setSoundChoice] = useState(true);
   const [openMenu, setOpenMenu] = useState(true);
-  const [check, setCheck] = useState(false);
+  // const [check, setCheck] = useState(false);
   const [file, setFile] = useState([]);
   const [uploadFlag, setUploadFlag] = useState(false);
   const [roomInfo, setRoomInfo] = useState({});
@@ -78,7 +78,7 @@ const Chat = ({ name, setName }) => {
     });
   }, []);
 
-  /* Username change */
+  /* Username change
   const changeUsername = useCallback((newUsername) => {
     if (newUsername) {
       socket.emit('changeUsername', newUsername);
@@ -86,6 +86,7 @@ const Chat = ({ name, setName }) => {
       setCheck(false);
     }
   }, [setName]);
+  */
 
   /* Typing Hook */
   useEffect(() => {

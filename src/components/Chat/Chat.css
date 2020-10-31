@@ -1,3 +1,16 @@
+a {
+  font-size:12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing:2px;
+}
+
+h1{
+  font-size:1.1em;
+  font-weight: 700;
+}
+  
   .outerContainer {
     display: flex;
     height: 100%;
@@ -10,7 +23,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 90vw;
+    width: 100vw;
   }
 
   audio {
@@ -18,16 +31,88 @@
   }
 
   .button {
+    margin:0;
+    padding:0;
     cursor:pointer !important;
   }
 
-  .slider {
-    text-align: center;
-    letter-spacing: 10px;
-    background-color: #dee2e6;
-    cursor: row-resize;
-    user-select: none; /* disable selection */
+
+  .detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:30vw;
+    height:100vh;
+    font-size:14px;
+
+    /* box-shadow: inset 1px 0px 10px var(--aux-color); */
   }
+  .detail > .header{
+    height:10vh;
+    width:100%;
+    padding:0;
+    margin:0;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header > button {
+    width:20%;
+    border:none;
+    font-size:1em;
+    background-color: transparent;
+  }
+
+  .header > button > svg{
+    fill: #ccc;
+    stroke: #ccc;
+  }
+  
+  .header > .toggles {
+    justify-content: flex-start;
+    flex-direction:row;
+  }
+
+  .count{
+    width:13%;
+    left:0;
+    right:0;
+    margin:auto;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    font-size:14px;
+  }
+
+  .info{
+    width:100%;
+    font-weight: 700;
+    margin: 0 1.5vw;
+    display:flex;
+    align-items:center;
+    justify-content: flex-start;
+  }
+
+  .info > .title {
+    width:20%;
+    padding:0;
+    margin:0;
+    display:flex;
+    align-items:center;
+    justify-content: flex-start;
+  }
+
+.profile {
+  width:35px;
+  height:35px;
+  margin:0;
+  padding:0;
+}
+
+
+
+
 
   @media (min-width: 320px) and (max-width: 1200px) {
     .outerContainer {
@@ -36,6 +121,29 @@
 
     .container {
       width: 100vw;
+      height:45vh;
+      top:0;
+    }
+
+    .detail{
+      width:100%;
+      bottom:0;
+      position:absolute;
+      height:55vh;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .detail > .header{
+      height:7vh;
+      width:100%;
+      padding:0;
+      margin:0;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #222;
     }
 
     .player{

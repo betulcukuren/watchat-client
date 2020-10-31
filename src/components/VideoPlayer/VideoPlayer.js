@@ -48,14 +48,14 @@ const VideoPlayer = ({
     }
   };
 
-  const setIsShown = (display) => {
-    const toolbar = document.getElementById('videoToolbar');
-    if (display) {
-      toolbar.style.display = 'flex';
-    } else {
-      toolbar.style.display = 'none';
-    }
-  };
+  // const setIsShown = (display) => {
+  //   const toolbar = document.getElementById('videoToolbar');
+  //   if (display) {
+  //     toolbar.style.display = 'flex';
+  //   } else {
+  //     toolbar.style.display = 'none';
+  //   }
+  // };
 
   const play = () => {
     handlePlayPause(true);
@@ -68,8 +68,8 @@ const VideoPlayer = ({
   return (
     <div
       className="playerContainer"
-      onMouseEnter={() => setIsShown(true)}
-      onMouseLeave={() => setIsShown(false)}
+      // onMouseEnter={() => setIsShown(true)}
+      // onMouseLeave={() => setIsShown(false)}
     >
       <div className="playerSection">
         <ReactPlayer
@@ -141,7 +141,6 @@ const VideoPlayer = ({
             />
           </div>
           <div className="center control">
-            <p>paste url:</p>
             <input
               className="input videoLink"
               type="input"

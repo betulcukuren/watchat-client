@@ -9,17 +9,17 @@ const Input = ({
   sendMessage,
   message,
   file, setPreview,
-  setOpenMenu, openMenu,
+  // setOpenMenu, openMenu,
 }) => (
   <form className="form">
     <div className="icon group">
-      <button
+      {/* <button
         className="button"
         onClick={() => setOpenMenu(!openMenu)}
         type="button"
       >
         <MdOndemandVideo className="icon" />
-      </button>
+      </button> */}
       <div className="file button" style={{ color: '#caccca' }}>
         <label htmlFor="fileInput" className="fileLabel">
           <MdAttachFile />

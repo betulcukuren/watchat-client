@@ -1,5 +1,5 @@
 .messageBox {
-    font-size:14px;
+    font-size:12px;
     border-radius: 1em;
     padding: .5em 1em;
     margin-bottom:.05em;
@@ -11,7 +11,7 @@
     width: 100%;
     letter-spacing: 0;
     float: left;
-    font-size: 14px;
+    font-size: 12px;
     word-wrap: break-word;
     margin:0px;
   }

@@ -1,7 +1,7 @@
 // theme.js
 export const lightTheme = {
   main: '#4a4d4a',
-  bg: '#e7e7e7',
+  bg: '#010203',
   lightenAux: '#f6f6f6',
   aux: '#caccca',
   rightMenuBg: '#f1f1f1',
@@ -33,7 +33,7 @@ export const darkTheme = {
   lightenAux: '#f6f6f6',
   aux: '#0a0b0c',
   rightMenuBg: '#0a0b0c',
-  inputBg: '#0d0e0f',
+  inputBg: '#252525',
   inputColor: '#fff',
   formBg: '#0e0d15',
   text: '#eee',

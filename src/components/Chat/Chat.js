@@ -4,17 +4,20 @@ import React, {
 import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { FaUserAlt } from 'react-icons/fa';
+import { BiLink } from 'react-icons/bi';
 import { lightTheme, darkTheme } from '../Theme/theme';
 import GlobalStyles from '../Theme/global';
-import Details from '../Details';
+// import Details from '../Details';
 import Messages from '../Messages';
 import Input from '../Input';
 import Typing from '../Typing';
 import FilePreview from '../FilePreview';
 import VideoPlayer from '../VideoPlayer';
+import Toggles from '../Toggles';
 import './Chat.css';
 
-const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
+const ENDPOINT = 'http://localhost:5000/';
 const socket = io(ENDPOINT);
 
 const Chat = ({ name, setName }) => {
@@ -216,6 +219,30 @@ const Chat = ({ name, setName }) => {
                       />
                     )
                   }
+          </div>
+          <div className="detail">
+            <div className="header">
+              <div className="info">
+                <p id="title">
+                  {room}
+                  {' '}
+                  <button type="button" className="button"><BiLink /></button>
+                </p>
+                <p className="count" id="userCount">
+                  <FaUserAlt />
+                  {users.length}
+                  {' '}
+                </p>
+              </div>
+
+              <Toggles
+                toggleTheme={toggleTheme}
+                theme={theme}
+                toggleNotification={toggleNotification}
+                soundChoice={soundChoice}
+              />
+              <button type="button" className="profile settings"><img className="profile photo" src="pp.png" alt="profil" /></button>
+            </div>
             <Messages messages={messages} name={name} />
             <Typing users={users} name={name} />
             <Input
@@ -227,18 +254,6 @@ const Chat = ({ name, setName }) => {
               openMenu={openMenu}
             />
           </div>
-          <Details
-            users={users}
-            roomName={room}
-            name={name}
-            changeUsername={changeUsername}
-            check={check}
-            setCheck={setCheck}
-            toggleTheme={toggleTheme}
-            theme={theme}
-            toggleNotification={toggleNotification}
-            soundChoice={soundChoice}
-          />
         </div>
       </>
     </ThemeProvider>

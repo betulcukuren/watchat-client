@@ -28,12 +28,9 @@
     width: 55vw;
     height:6vh;
     text-indent: .2em;
-    margin:0;
-    padding:.8em;
-    border-top-left-radius: .5em;
-    border-top-right-radius: .5em;
-    border-bottom-left-radius: .5em;
-    border-bottom-right-radius: .5em;
+    margin: -.4em 1em;
+    padding: 0em .5em;
+    border-radius: 1em;
     /* border:1px solid purple; */
   }
   
@@ -63,7 +60,7 @@
   @media (min-width: 480px) and (max-width: 1200px) {
     .form{
       font-size:16px;
-      margin-bottom: 5vh;
+      margin-bottom: 2vh;
     }
 
     .button {
@@ -74,7 +71,7 @@
     .input{
       width:60vw;
       height:6vh;
-      margin:1vh;
+      margin: -.4em 1em;
     }
 
   }

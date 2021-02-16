@@ -24,7 +24,6 @@ export const lightTheme = {
   systemMsg: '#3B403A',
   settingsBtn: '#4a4d4a',
   buttonColor: '#4a4d4a', /* 3e978b */
-
 };
 
 export const darkTheme = {

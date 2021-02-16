@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { FaEdit, FaUserAlt } from 'react-icons/fa';
+import { FaEdit } from 'react-icons/fa';
 import { MdExitToApp, MdCheck } from 'react-icons/md';
 import { FiShare2 } from 'react-icons/fi';
 import Toggles from '../Toggles';
 import './Details.css';
 
 const Details = ({
-  users, roomName, name, changeUsername,
+  users, name, changeUsername,
   check, setCheck, toggleTheme,
   theme, toggleNotification, soundChoice,
 }) => {
@@ -36,17 +36,8 @@ const Details = ({
           />
         </div>
         <div className="title" id="roomTitle">
-          <p id="title">
-            {roomName}
-            {' '}
-          </p>
           <button type="button" className="shareBtn" id="shareBtn"><FiShare2 /></button>
         </div>
-        <p className="count" id="userCount">
-          {users.length}
-          {' '}
-          <FaUserAlt />
-        </p>
       </div>
       {
         users

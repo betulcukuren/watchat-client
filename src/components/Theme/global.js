@@ -139,7 +139,6 @@ export default createGlobalStyle`
   }
 
   /***** message colors ******/
-
   .messageBox {
     background:  ${({ theme }) => theme.messageBox};
     color:  ${({ theme }) => theme.message};
@@ -179,6 +178,16 @@ export default createGlobalStyle`
   .time{
     color: ${({ theme }) => theme.main};
   }
+
+  .tab{
+    color: ${({ theme }) => theme.white};
+  }
+
+  .tab.active {
+    border-bottom: 1px solid ${({ theme }) => theme.main};
+    color: ${({ theme }) => theme.main};
+  }
+  
 
 /
   `;

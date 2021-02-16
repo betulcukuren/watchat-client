@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import './Input.css';
 import {
-  MdSend, MdAttachFile, MdOndemandVideo,
+  MdSend, MdAttachFile,
 } from 'react-icons/md';
 
 const Input = ({
@@ -9,17 +9,9 @@ const Input = ({
   sendMessage,
   message,
   file, setPreview,
-  // setOpenMenu, openMenu,
 }) => (
   <form className="form">
     <div className="icon group">
-      {/* <button
-        className="button"
-        onClick={() => setOpenMenu(!openMenu)}
-        type="button"
-      >
-        <MdOndemandVideo className="icon" />
-      </button> */}
       <div className="file button" style={{ color: '#caccca' }}>
         <label htmlFor="fileInput" className="fileLabel">
           <MdAttachFile />

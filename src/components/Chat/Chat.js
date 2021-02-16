@@ -1,10 +1,10 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, {
   useState, useEffect, useCallback, useRef,
 } from 'react';
 import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { FaUserAlt } from 'react-icons/fa';
 import { BiLink } from 'react-icons/bi';
 import { lightTheme, darkTheme } from '../Theme/theme';
 import GlobalStyles from '../Theme/global';
@@ -225,24 +225,28 @@ const Chat = ({ name }) => {
             <div className="header">
               <div className="info">
                 <p id="title">
-                  {room}
-                  {' '}
+                  <button
+                    className="button"
+                    onClick={() => setOpenMenu(!openMenu)}
+                    type="button"
+                  >
+                    {/* <BiArrowToLeft className="icon hide" /> */}
+                  </button>
                   <button type="button" className="button"><BiLink /></button>
                 </p>
-                <p className="count" id="userCount">
-                  <FaUserAlt />
-                  {users.length}
-                  {' '}
-                </p>
               </div>
-
+              <div className="tabs">
+                <span className="tab active">messages</span>
+                <span className="tab">users
+                  ({users.length})
+                </span>
+              </div>
               <Toggles
                 toggleTheme={toggleTheme}
                 theme={theme}
                 toggleNotification={toggleNotification}
                 soundChoice={soundChoice}
               />
-              <button type="button" className="profile settings"><img className="profile photo" src="pp.png" alt="profil" /></button>
             </div>
             <Messages messages={messages} name={name} />
             <Typing users={users} name={name} />

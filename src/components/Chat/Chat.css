@@ -110,8 +110,29 @@ h1{
   padding:0;
 }
 
+.tabs {
+  position: absolute;
+  top:8%;
+  width: 150px;
+  display:flex;
+  right:0;
+  justify-content:space-evenly;
+}
 
+.tab.active{
+  font-weight: bold;
+}
 
+.tab {
+  cursor:pointer;
+  font-size:12px;
+  padding:5px 5%;
+}
+
+.hide.icon {
+  margin-left: -20px;
+  margin-right: 15px;
+}
 
 
   @media (min-width: 320px) and (max-width: 1200px) {
@@ -148,5 +169,16 @@ h1{
 
     .player{
       height:40vh !important;
+    }
+
+    .tabs {
+      position: absolute;
+      top:2%;
+      left:0;
+      width: 80%;
+      display:flex;
+      right:0;
+      margin:auto;
+      justify-content:space-evenly;
     }
   }

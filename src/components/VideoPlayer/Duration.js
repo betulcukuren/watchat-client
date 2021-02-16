@@ -13,6 +13,7 @@ const format = (seconds) => {
     }
     return `${mm}:${ss}`;
   }
+  return null;
 };
 
 export default function Duration({ className, seconds }) {

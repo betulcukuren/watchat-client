@@ -1,8 +1,8 @@
 .messages {
-    padding: 1vh 2vh;
+    padding: 5vh 1vh;
     overflow-y: auto;
     flex: auto;
-    height: 88vh;
+    height: 90vh;
     width: 100%;
     min-height: 0;
   }

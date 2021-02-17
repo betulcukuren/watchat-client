@@ -165,6 +165,10 @@
 
 
 @media (min-width: 320px) and (max-width: 1200px) {
+  .playerContainer{
+    margin-top:0vh;
+  }
+  
   .fullscreen.button {
     margin-left:95vw;
     margin-top:-7vh;

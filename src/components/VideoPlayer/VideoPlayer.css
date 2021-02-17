@@ -42,16 +42,16 @@
 
 .controls {
   position: relative;
-  width:100%;
+  width:69vw;
+  height: 7.5vh;
   display:flex;
   justify-content: space-between;
   align-items:center;
   margin:0;
-  padding:1vh;
+  padding:0vh;
 }
 
 .control {
-  width:10vw;
   display:flex;
   align-items:center;
   justify-content: flex-start;
@@ -93,13 +93,17 @@
 }
 
 .center.control{
-  width:40vw;
+  width:55vw;
   justify-content: space-between;
 }
 
 .center.control > p {
   width:5vw;
   font-size:14px;
+}
+
+.right.control {
+  width:5vw;
 }
 
 .input.videoLink {
@@ -166,8 +170,12 @@
     margin-top:-7vh;
   }
 
+  .controls {
+    width:100vw;
+    height: 7.5vh;
+  }
+
   .control {
-    width:10vw;
     display:flex;
     align-items:center;
     justify-content: flex-start;

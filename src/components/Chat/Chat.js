@@ -17,7 +17,7 @@ import VideoPlayer from '../VideoPlayer';
 import Toggles from '../Toggles';
 import './Chat.css';
 
-const ENDPOINT = 'https://chat-app-exercise.herokuapp.com/';
+const ENDPOINT = 'https://watchatserver.herokuapp.com/';
 const socket = io(ENDPOINT);
 
 const Chat = ({ name }) => {

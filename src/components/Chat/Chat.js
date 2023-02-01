@@ -17,7 +17,7 @@ import VideoPlayer from '../VideoPlayer';
 import Toggles from '../Toggles';
 import './Chat.css';
 
-const ENDPOINT = 'http://localhost:5000';
+const ENDPOINT = 'https://watchatserver.herokuapp.com/';
 const socket = io(ENDPOINT);
 
 const Chat = ({ name }) => {

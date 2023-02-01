@@ -78,7 +78,7 @@ const Message = ({ message: { text, user, color }, name }) => {
 Message.propTypes = {
   message: PropTypes.shape({
     text: PropTypes.string,
-    user: PropTypes.shape({}),
+    user: PropTypes.string,
     color: PropTypes.string,
   }),
   name: PropTypes.string,

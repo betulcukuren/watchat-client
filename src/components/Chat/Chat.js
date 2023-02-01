@@ -17,7 +17,7 @@ import VideoPlayer from '../VideoPlayer';
 import Toggles from '../Toggles';
 import './Chat.css';
 
-const ENDPOINT = 'https://watchatserver.herokuapp.com/';
+const ENDPOINT = 'http://localhost:5000';
 const socket = io(ENDPOINT);
 
 const Chat = ({ name }) => {
@@ -38,7 +38,7 @@ const Chat = ({ name }) => {
   const [roomInfo, setRoomInfo] = useState({});
 
   /* Video Player States */
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState('https://www.youtube.com/watch?v=VXPoJAyeF8k');
   const [volume, setVolume] = useState(0.8);
   const [muted, setMuted] = useState(false);
   const [seeking, setSeeking] = useState(false);
@@ -199,27 +199,30 @@ const Chat = ({ name }) => {
           }
           <div className="container">
             {
-                    Object.keys(roomInfo).length > 0 && openMenu && (
-                      <VideoPlayer
-                        ref={player}
-                        className="player"
-                        url={roomInfo.video.url}
-                        played={roomInfo.video.playedSeconds}
-                        playing={roomInfo.video.playing}
-                        seeking={seeking}
-                        setPlayed={setPlayed}
-                        handlePlayPause={handlePlayPause}
-                        setSeeking={setSeeking}
-                        volume={volume}
-                        setVolume={setVolume}
-                        muted={muted}
-                        setMuted={setMuted}
-                        changeUrl={changeUrl}
-                        onUrl={onUrl}
-                        seekToVideo={seekToVideo}
-                      />
-                    )
-                  }
+              console.log(roomInfo)
+            }
+            {
+              Object.keys(roomInfo).length > 0 && openMenu && (
+                  <VideoPlayer
+                    ref={player}
+                    className="player"
+                    url={roomInfo.video.url}
+                    played={roomInfo.video.playedSeconds}
+                    playing={roomInfo.video.playing}
+                    seeking={seeking}
+                    setPlayed={setPlayed}
+                    handlePlayPause={handlePlayPause}
+                    setSeeking={setSeeking}
+                    volume={volume}
+                    setVolume={setVolume}
+                    muted={muted}
+                    setMuted={setMuted}
+                    changeUrl={changeUrl}
+                    onUrl={onUrl}
+                    seekToVideo={seekToVideo}
+                  />
+              )
+            }
           </div>
           <div className="detail">
             <div className="header">

@@ -17,7 +17,7 @@ import VideoPlayer from '../VideoPlayer';
 import Toggles from '../Toggles';
 import './Chat.css';
 
-const ENDPOINT = 'https://watchatserver.herokuapp.com/';
+const ENDPOINT = 'http://localhost:5000';
 const socket = io(ENDPOINT);
 
 const Chat = ({ name }) => {
@@ -38,7 +38,7 @@ const Chat = ({ name }) => {
   const [roomInfo, setRoomInfo] = useState({});
 
   /* Video Player States */
-  const [url, setUrl] = useState('https://www.youtube.com/watch?v=VXPoJAyeF8k');
+  const [url, setUrl] = useState('https://youtu.be/vOa--Dhu11M?si=aVZOOfrTiIWELBJ_');
   const [volume, setVolume] = useState(0.8);
   const [muted, setMuted] = useState(false);
   const [seeking, setSeeking] = useState(false);
